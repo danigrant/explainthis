@@ -10,13 +10,15 @@ function IndividualExplanationContainer() {
       </div>
       <style jsx>{`
         .explanationContainer {
-          border-radius: 10;
+          border-radius: 10px;
           background-color: #F6F6F6;
           font-size: 30px;
           font-weight: 600;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           max-width: 500px;
           padding: 20px;
+          position: relative;
+          height: 300px;
         }
         p {
           margin: 0;
@@ -25,6 +27,10 @@ function IndividualExplanationContainer() {
           margin: 0;
           color: inherit;
           text-decoration: underline;
+        }
+        .explanationAttribution {
+          position: absolute;
+          bottom: 10px;
         }
         .avatar {
           border-radius: 50px;

@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <div className="wrapper">
     <Head>
       <link
         href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap"
@@ -10,6 +10,12 @@ function MyApp({ Component, pageProps }) {
       />
     </Head>
     <Component {...pageProps} />
+    <style jsx>{`
+        .wrapper {
+          display: flex;
+          justify-content: center;
+        }
+    `}</style>
     </div>
   )
 }

@@ -1,17 +1,16 @@
-function RatingButton() {
+function RatingButton(props) {
   return (
     <div className="buttonOuter">
       <div className="internalButtonContent">
-        <img src="/images/get-it-face.png"/>
-        <p>I get this</p>
+        {props.children}
       </div>
       <style jsx>{`
         .buttonOuter {
           padding: 10px;
           width: 150px;
           height: 125px;
-          background-color: #B775E0;
-          box-shadow: 0px 4px 0px #9F0B37;
+          background-color: ${props.mainColor};
+          box-shadow: 0px 4px 0px ${props.bottomColor};
           border-radius: 20px;
           display: inline-block;
           color: white;
@@ -29,14 +28,14 @@ function RatingButton() {
         }
         .internalButtonContent {
           position: relative;
-          top: 10px;
+          top: 5px;
         }
-        img {
-          width: 65px;
-          height: 65px;
-        }
-        p {
-          margin: 0;
+        @media (max-width: 600px) {
+          .buttonOuter {
+            width: 130px;
+            height: 120px;
+            font-size: 18px;
+          }
         }
       `}</style>
     </div>
