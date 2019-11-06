@@ -1,6 +1,7 @@
 const AppContainerStyle = {
   margin: 20,
   padding: 20,
+  maxWidth: 700
 };
 
 const AppContainer = props => (

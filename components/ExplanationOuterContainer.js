@@ -1,13 +1,15 @@
 import IndividualExplanationContainer from './IndividualExplanationContainer'
+import RatingButton from './RatingButton'
+import Button from './Button'
 
 function ExplanationOuterContainer() {
   return (
     <div>
       <IndividualExplanationContainer>
       </IndividualExplanationContainer>
-      <button>I got it.</button>
-      <button>I didn't get it.</button>
-      <button>Add my own</button>
+      <RatingButton>I got it.</RatingButton>
+      <RatingButton>I didn't get it.</RatingButton>
+      <Button>Add my own</Button>
     </div>
   )
 }
