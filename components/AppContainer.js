@@ -5,7 +5,7 @@ const AppContainer = props => (
     .appContainerStyle {
       margin: 20;
       padding: 20;
-      maxWidth: 950;
+      width: 600px;
     }
     @media (max-width: 600px) {
       .appContainerStyle {
