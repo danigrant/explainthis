@@ -3,7 +3,10 @@ const AppContainer = props => (
     {props.children}
   <style jsx>{`
     .appContainerStyle {
+      width: 750px;
+      margin: 0 auto;
       margin: 20;
+      margin-top: 80px;
       padding: 20;
     }
     @media (max-width: 600px) {

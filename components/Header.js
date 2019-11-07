@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-
 function Header() {
   return (
     <div className="wrapper">
@@ -28,8 +27,13 @@ function Header() {
       </div>
       <style jsx>{`
         .wrapper {
+          background-color: white;
+          z-index: 1;
           border-bottom: 1px solid #ddd;
           padding-bottom: 15px;
+          position: fixed;
+          top: 0;
+          width: 100%;
         }
         .sizeContainer {
           width: 750px;

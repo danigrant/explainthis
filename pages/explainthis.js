@@ -1,30 +1,24 @@
 import Header from '../components/Header'
 import AppContainer from '../components/AppContainer';
-import ExplanationOuterContainer from '../components/ExplanationOuterContainer';
+import ActionBar from '../components/ActionBar'
+import ExplanationsSection from '../components/ExplanationsSection'
 
 function ExplainThis() {
   return (
     <div>
       <Header />
       <AppContainer>
-        <h1>Emergence</h1>
-        <ExplanationOuterContainer>
-        </ExplanationOuterContainer>
+        <div className="explanationHeader">
+          <h1>What is the best way to explain Emergence?</h1>
+          <ActionBar />
+          <p>2 Explanations</p>
+        </div>
+        <ExplanationsSection />
       </AppContainer>
       <style jsx>{`
-        h1 {
-          font-weight: bolder;
-          font-size: 42px;
+        .explanationHeader {
+          border-bottom: 1px solid #ddd;
         }
-        h2 {
-          font-weight: normal;
-          font-size: 18px;
-        }
-     `}</style>
-     <style global jsx>{`
-       body {
-         font-family: -apple-system, 'IBM Plex Sans', sans-serif;
-       }
      `}</style>
     </div>
   )

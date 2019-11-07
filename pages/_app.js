@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
     <Component {...pageProps} />
     <style jsx>{`
         .wrapper {
-          
+          font-family: -apple-system, 'IBM Plex Sans', sans-serif;
         }
     `}</style>
     </div>
