@@ -118,7 +118,7 @@ function Profile() {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fprofile&absolutePagePath=%2FUsers%2Fdanigrant%2FProjects%2Fexplainthis%2Fpages%2Fprofile.js ***!
   \******************************************************************************************************************************************/
@@ -141,5 +141,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=profile.js.map
