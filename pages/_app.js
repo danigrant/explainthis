@@ -4,16 +4,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <div className="wrapper">
     <Head>
-      <link
-        href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap"
-        rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     </Head>
     <Component {...pageProps} />
     <style jsx>{`
         .wrapper {
-          display: flex;
-          justify-content: center;
+          
         }
     `}</style>
     </div>

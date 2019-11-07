@@ -1,12 +1,13 @@
+import Header from '../components/Header'
 import AppContainer from '../components/AppContainer';
 import ExplanationOuterContainer from '../components/ExplanationOuterContainer';
 
 function ExplainThis() {
   return (
     <div>
+      <Header />
       <AppContainer>
         <h1>Emergence</h1>
-        <h2>We all understand things differently. That’s a feature! Not a bug. ExplainThis collects different explanations of  so you can keep clicking through until you stumble upon one that creates that aha! moment for you. </h2>
         <ExplanationOuterContainer>
         </ExplanationOuterContainer>
       </AppContainer>
@@ -22,7 +23,7 @@ function ExplainThis() {
      `}</style>
      <style global jsx>{`
        body {
-         font-family: 'IBM Plex Sans', sans-serif;
+         font-family: -apple-system, 'IBM Plex Sans', sans-serif;
        }
      `}</style>
     </div>
