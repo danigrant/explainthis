@@ -20,6 +20,9 @@ function TempAddAnswer() {
         <div className="toolBarItem">
           <img src="/images/youtube.svg" />
         </div>
+        <div className="toolBarItem">
+          <i className="material-icons">camera_front_rounded</i>
+        </div>
       </div>
       <div className="editor">
         <form>
