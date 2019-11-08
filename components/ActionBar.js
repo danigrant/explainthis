@@ -1,13 +1,11 @@
 import Link from 'next/link';
 
-function ActionBar() {
+function ActionBar(props) {
   return (
     <div className="actionBar">
-      <div className="actionBarItem">
+      <div onClick={props.handleAnswerClick} className="actionBarItem">
         <i className="material-icons">edit_rounded</i>
-        <Link href="/">
-          <a title="Home">Add Your Own</a>
-        </Link>
+        <a title="Home">Add Your Own</a>
       </div>
       <div className="actionBarItem">
         <i className="material-icons">emoji_people_rounded</i>
