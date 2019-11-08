@@ -14,9 +14,12 @@ class ExplainThis extends React.Component {
       showEditor: false
     }
   }
+  componentDidMount() {
+    
+  }
   handleAnswerClick = () => { // es6 so that you don't have to bind this for scope
     this.setState({
-      showEditor: true
+      showEditor: !this.state.showEditor
     })
   }
   render() {
