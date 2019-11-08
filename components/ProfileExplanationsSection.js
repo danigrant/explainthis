@@ -84,7 +84,7 @@ function ProfileExplanationsSection() {
           filter: brightness(115%);
           cursor: pointer;
         }
-        .pointCounter:active {
+        .pointCounter:active   {
           transform: rotate(180deg)
         }
 

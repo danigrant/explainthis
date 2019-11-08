@@ -33,6 +33,7 @@ function Header() {
           padding-bottom: 15px;
           position: fixed;
           top: 0;
+          left: 0;
           width: 100%;
         }
         .sizeContainer {
