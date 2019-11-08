@@ -47,6 +47,9 @@ function ExplanationsSection() {
           border-bottom: 1px solid #ddd;
           margin-bottom: 20px;
         }
+        .explanation:last-child {
+          border: none;
+        }
         .attributionAvatar {
           width: 30px;
           border-radius: 50px;
@@ -60,10 +63,10 @@ function ExplanationsSection() {
         }
         .explanationMeat {
           padding-bottom: 10px;
-          border-bottom: 1px solid #ddd;
         }
         .explanationAction {
           display: inline-block;
+          transition:0.3s;
         }
         .explanationAction:nth-of-type(2) {
           margin-left: 35px;
@@ -78,6 +81,16 @@ function ExplanationsSection() {
         .explanationAction p {
           display: inline-block;
         }
+        .explanationAction:hover {
+          transform: scale(1.1);
+          transform-origin: center;
+          filter: brightness(115%);
+          cursor: pointer;
+        }
+        .explanationAction:active:first-child {
+          transform: rotate(180deg)
+        }
+
       `}</style>
     </div>
   )
