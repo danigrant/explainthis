@@ -1,5 +1,6 @@
 import Header from '../components/Header'
 import AppContainer from '../components/AppContainer';
+import ProfileExplanationsSection from '../components/ProfileExplanationsSection'
 
 function Profile() {
   return (
@@ -23,6 +24,10 @@ function Profile() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="explanationsSection">
+          <p>All of @barackobama's explanations:</p>
+          <ProfileExplanationsSection />
         </div>
       </AppContainer>
       <style jsx>{`
@@ -60,6 +65,11 @@ function Profile() {
           margin-left: 15px;
           position: relative;
           bottom: 5px;
+        }
+        .explanationsSection p {
+          padding-bottom: 10px;
+          border-bottom: 1px solid #ddd;
+          font-weight: bold;
         }
       `}</style>
     </div>

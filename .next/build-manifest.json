@@ -12,11 +12,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/profile": [
+    "/next/dist/pages/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/tempAddAnswer": [
+    "/profile": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
