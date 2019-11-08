@@ -6,6 +6,9 @@ function Leaderboard() {
     <div>
       <Header />
       <AppContainer>
+        <div className="title">
+          Leaderboard
+        </div>
         <table>
           <tr>
             <th>#</th>
@@ -28,7 +31,34 @@ function Leaderboard() {
         </table>
       </AppContainer>
       <style jsx>{`
-
+        .title {
+          text-align: center;
+          background-color: #00AFDD;
+          padding: 10px;
+          color: white;
+          font-weight: bold;
+          font-size: 28px;
+          border-radius: 4px 4px 0 0;
+        }
+        table {
+          background-color: white;
+          width: 100%;
+          text-align: left;
+          border-collapse: collapse;
+          font-size: 24px;
+          border-radius: 0 0 2px 2px;
+        }
+        tr {
+          border: none;
+        }
+        td {
+          border-top: solid 1px #ddd;
+          border-bottom: solid 1px #ddd;
+          padding: 8px;
+        }
+        th {
+          padding: 8px;
+        }
       `}</style>
       <style jsx global>{`
         body {
