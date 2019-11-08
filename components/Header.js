@@ -9,12 +9,6 @@ function Header() {
         </div>
         <div className="menu">
           <div className="menu-item">
-            <i className="material-icons">home_rounded</i>
-            <Link href="/">
-              <a title="Home">Home</a>
-            </Link>
-          </div>
-          <div className="menu-item">
             <i className="material-icons">emoji_events_rounded</i>
             <Link href="/leaderboard">
               <a title="Leaderboard">Leaderboard</a>
@@ -70,7 +64,7 @@ function Header() {
         }
         .avatar {
           display: inline-block;
-          margin-left: 250px;
+          margin-left: 400px;
         }
         .avatar img {
           display: inline-block;

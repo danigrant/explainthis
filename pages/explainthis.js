@@ -9,7 +9,7 @@ function ExplainThis() {
       <Header />
       <AppContainer>
         <div className="explanationHeader">
-          <h1>What is the best way to explain Emergence?</h1>
+          <h1>What are all the different ways to explain Emergence?</h1>
           <ActionBar />
           <p>2 Explanations</p>
         </div>
