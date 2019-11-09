@@ -61,7 +61,7 @@ class Editor extends React.Component {
         </div>
         {
           this.state.isMounted &&
-          <EditorJs className="editor" tools={{ embed: Embed, code: Code, simpleImage: SimpleImage, linkTool: LinkTool }} />
+          <EditorJs className="editor" autofocus={true} tools={{ embed: { class: Embed, inlineToolbar: true }, code: { class: Code, inlineToolbar: true }, simpleImage: { class: SimpleImage, inlineToolbar: true }, linkTool: { class: LinkTool, inlineToolbar: true } }} />
         }
         <style jsx>{`
           .wrapper {
