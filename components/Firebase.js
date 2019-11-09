@@ -30,10 +30,6 @@ async function getConcept(concept) {
 
 }
 
-void async function main() {
-  console.log(await getConcept('emergence'))
-}()
-
 export default getConcept
 
 

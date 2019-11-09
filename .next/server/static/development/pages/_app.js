@@ -133,9 +133,6 @@ async function getConcept(concept) {
   return data;
 }
 
-void async function main() {
-  console.log((await getConcept('emergence')));
-}();
 /* harmony default export */ __webpack_exports__["default"] = (getConcept); // https://firebase.google.com/docs/firestore/query-data/get-data
 
 /***/ }),

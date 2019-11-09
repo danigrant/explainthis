@@ -42,68 +42,37 @@ function getConcept(_x) {
 function _getConcept() {
   _getConcept = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
   /*#__PURE__*/
-  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(concept) {
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(concept) {
     var tempConcept, snapshot, data;
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context.prev = _context.next) {
           case 0:
             tempConcept = '';
-            _context2.next = 3;
+            _context.next = 3;
             return conceptsRef.where('concept', '==', concept).get();
 
           case 3:
-            snapshot = _context2.sent;
+            snapshot = _context.sent;
             data = [];
-            _context2.next = 7;
+            _context.next = 7;
             return snapshot.forEach(function (doc) {
               data.push(doc.data());
             });
 
           case 7:
-            return _context2.abrupt("return", data);
+            return _context.abrupt("return", data);
 
           case 8:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _getConcept.apply(this, arguments);
-}
-
-void function () {
-  var _main = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  /*#__PURE__*/
-  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.t0 = console;
-            _context.next = 3;
-            return getConcept('emergence');
-
-          case 3:
-            _context.t1 = _context.sent;
-
-            _context.t0.log.call(_context.t0, _context.t1);
-
-          case 5:
           case "end":
             return _context.stop();
         }
       }
     }, _callee);
   }));
+  return _getConcept.apply(this, arguments);
+}
 
-  function main() {
-    return _main.apply(this, arguments);
-  }
-
-  return main;
-}()();
 /* harmony default export */ __webpack_exports__["default"] = (getConcept); // https://firebase.google.com/docs/firestore/query-data/get-data
 
 /***/ }),

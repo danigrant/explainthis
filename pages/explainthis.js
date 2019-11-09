@@ -5,17 +5,21 @@ import ActionBar from '../components/ActionBar'
 import ExplanationsSection from '../components/ExplanationsSection'
 import mockData from '../mockconceptdata'
 import TempAddAnswer from './TempAddAnswer'
+import getConcept from '../components/Firebase'
 
 
 class ExplainThis extends React.Component {
   constructor(props) {
     super(props) // first thing you always do, calls the master react constructor
     this.state = {
-      showEditor: false
+      showEditor: false,
+      data: {}
     }
   }
-  componentDidMount() {
-    
+  async componentDidMount() {
+    this.setState({
+      data: await getConcept('emergence')
+    })
   }
   handleAnswerClick = () => { // es6 so that you don't have to bind this for scope
     this.setState({
@@ -33,6 +37,7 @@ class ExplainThis extends React.Component {
             { this.state.showEditor &&
               <TempAddAnswer />
             }
+            <p>{JSON.stringify(this.state.data[0])}</p>
             <p>{mockData.explanations.length} Explanations</p>
           </div>
           <ExplanationsSection explanations={mockData.explanations} />
