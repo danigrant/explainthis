@@ -4,7 +4,7 @@ import AppContainer from '../components/AppContainer';
 import ActionBar from '../components/ActionBar'
 import ExplanationsSection from '../components/ExplanationsSection'
 import Editor from '../components/Editor'
-import getConcept from '../components/Firebase'
+import { getConcept } from '../components/Firebase'
 import Loading from '../components/Loading'
 
 

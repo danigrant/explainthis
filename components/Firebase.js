@@ -27,10 +27,18 @@ async function getConcept(concept) {
     data.push(doc.data())
   })
   return data
+}
+
+async function saveExplanationToDB() {
 
 }
 
-export default getConcept
+const provider = new firebase.auth.TwitterAuthProvider();
+
+// todo sign in with twitter
+
+
+module.exports = { getConcept, saveExplanationToDB }
 
 
 // https://firebase.google.com/docs/firestore/query-data/get-data

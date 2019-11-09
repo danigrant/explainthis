@@ -7,6 +7,7 @@ function MyApp({ Component, pageProps }) {
     <Head>
       <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap" rel="stylesheet" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css" />
     </Head>
     <Component {...pageProps} />
     <style jsx>{`
