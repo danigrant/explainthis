@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import '../components/Firebase'
 
 function MyApp({ Component, pageProps }) {
   return (

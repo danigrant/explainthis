@@ -1,7 +1,5 @@
 import * as firebase from 'firebase';
 
-require('dotenv').config()
-
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "explain-this.firebaseapp.com",
@@ -13,4 +11,30 @@ const firebaseConfig = {
     measurementId: "G-2HP7D44T1F"
   };
 
-const app = firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+const db = firebase.firestore();
+const conceptsRef = db.collection('concepts');
+
+async function getConcept(concept) {
+  let tempConcept = ''
+
+  let snapshot = await conceptsRef.where('concept', '==', concept).get()
+  let data = []
+  await snapshot.forEach(doc => {
+    data.push(doc.data())
+  })
+  return data
+
+}
+
+void async function main() {
+  console.log(await getConcept('emergence'))
+}()
+
+export default getConcept
+
+
+// https://firebase.google.com/docs/firestore/query-data/get-data

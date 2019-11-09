@@ -5,7 +5,6 @@ const mockData = {
         "author": "@barackobama",
         "explanation": "whatever the explanation is plus video or something maybe this is html?",
         "datetime": 1573234579251,
-        "voteCount": 12,
         "voteLog": [
           {
             "user": "@barackobama",
