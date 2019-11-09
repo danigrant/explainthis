@@ -3,7 +3,6 @@ import Header from '../components/Header'
 import AppContainer from '../components/AppContainer';
 import ActionBar from '../components/ActionBar'
 import ExplanationsSection from '../components/ExplanationsSection'
-import mockData from '../mockconceptdata'
 import Editor from '../components/Editor'
 import getConcept from '../components/Firebase'
 import Loading from '../components/Loading'

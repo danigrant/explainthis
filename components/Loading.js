@@ -1,7 +1,13 @@
+import Header from '../components/Header'
+import AppContainer from '../components/AppContainer';
+
 function Loading() {
   return (
     <div>
-      <p>loading...</p>
+      <Header />
+      <AppContainer>
+        <p>loading...</p>
+      </AppContainer>
     </div>
   )
 }
