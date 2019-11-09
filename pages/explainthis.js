@@ -6,6 +6,7 @@ import ExplanationsSection from '../components/ExplanationsSection'
 import mockData from '../mockconceptdata'
 import Editor from '../components/Editor'
 import getConcept from '../components/Firebase'
+import Loading from '../components/Loading'
 
 
 class ExplainThis extends React.Component {
@@ -27,28 +28,34 @@ class ExplainThis extends React.Component {
     })
   }
   render() {
-    return (
-      <div>
-        <Header />
-        <AppContainer>
-          <div className="explanationHeader">
-            <h1>What are all the different ways to explain {mockData.concept}?</h1>
-            <ActionBar handleAnswerClick={this.handleAnswerClick} />
-            { this.state.showEditor &&
-              <Editor />
-            }
-            <p>{JSON.stringify(this.state.data[0])}</p>
-            <p>{mockData.explanations.length} Explanations</p>
-          </div>
-          <ExplanationsSection explanations={mockData.explanations} />
-        </AppContainer>
-        <style jsx>{`
-          .explanationHeader {
-            border-bottom: 1px solid #ddd;
-          }
-       `}</style>
-      </div>
-    )
+      {
+        if (!this.state.data.length) {
+          return <Loading />
+        }
+        else {
+          return (
+            <div>
+              <Header />
+              <AppContainer>
+                <div className="explanationHeader">
+                  <h1>What are all the different ways to explain {this.state.data[0].concept}?</h1>
+                  <ActionBar handleAnswerClick={this.handleAnswerClick} />
+                  { this.state.showEditor &&
+                    <Editor />
+                  }
+                  <p>{this.state.data[0].explanations.length} Explanations</p>
+                </div>
+                <ExplanationsSection explanations={this.state.data[0].explanations} />
+              </AppContainer>
+              <style jsx>{`
+                .explanationHeader {
+                  border-bottom: 1px solid #ddd;
+                }
+             `}</style>
+            </div>
+          )
+        }
+      }
   }
 }
 
