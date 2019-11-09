@@ -1,5 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
+import { EDITOR_JS_TOOLS } from './EditorTools'
 
 // import EditorJs from 'react-editor-js'
 // import Embed from '@editorjs/embed'
@@ -50,6 +51,9 @@ class Editor extends React.Component {
       isMounted: true
     })
   }
+  async handleSave() {
+    const savedData = await this.editorInstance.save();
+  }
   render() {
     return (
       <div className="wrapper">
@@ -58,10 +62,11 @@ class Editor extends React.Component {
             <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
             <p className="attributionUsername">@barackobama</p>
           </div>
+          <div onClick={this.handleSave}>submit button</div>
         </div>
         {
           this.state.isMounted &&
-          <EditorJs className="editor" autofocus={true} tools={{ embed: { class: Embed, inlineToolbar: true }, code: { class: Code, inlineToolbar: true }, simpleImage: { class: SimpleImage, inlineToolbar: true }, linkTool: { class: LinkTool, inlineToolbar: true } }} />
+          <EditorJs className="editor" instanceRef={instance => this.editorInstance = instance} placeholder='Add your creative explanation' tools={EDITOR_JS_TOOLS} />
         }
         <style jsx>{`
           .wrapper {

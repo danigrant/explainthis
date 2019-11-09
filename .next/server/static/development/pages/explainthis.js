@@ -246,9 +246,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dynamic */ "next/dynamic");
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _EditorTools__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditorTools */ "./components/EditorTools.js");
 var _jsxFileName = "/Users/danigrant/Projects/explainthis/components/Editor.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
  // import EditorJs from 'react-editor-js'
 // import Embed from '@editorjs/embed'
@@ -312,26 +314,30 @@ class Editor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     });
   }
 
+  async handleSave() {
+    const savedData = await this.editorInstance.save();
+  }
+
   render() {
     return __jsx("div", {
       className: "jsx-847575237" + " " + "wrapper",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 59
       },
       __self: this
     }, __jsx("div", {
       className: "jsx-847575237" + " " + "header",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 56
+        lineNumber: 60
       },
       __self: this
     }, __jsx("div", {
       className: "jsx-847575237" + " " + "attribution",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 61
       },
       __self: this
     }, __jsx("img", {
@@ -339,51 +345,189 @@ class Editor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       className: "jsx-847575237" + " " + "attributionAvatar",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 62
       },
       __self: this
     }), __jsx("p", {
       className: "jsx-847575237" + " " + "attributionUsername",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 63
       },
       __self: this
-    }, "@barackobama"))), this.state.isMounted && __jsx(EditorJs, {
-      className: "editor",
-      autofocus: true,
-      tools: {
-        embed: {
-          class: Embed,
-          inlineToolbar: true
-        },
-        code: {
-          class: Code,
-          inlineToolbar: true
-        },
-        simpleImage: {
-          class: SimpleImage,
-          inlineToolbar: true
-        },
-        linkTool: {
-          class: LinkTool,
-          inlineToolbar: true
-        }
-      },
+    }, "@barackobama")), __jsx("div", {
+      onClick: this.handleSave,
+      className: "jsx-847575237",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 65
+      },
+      __self: this
+    }, "submit button")), this.state.isMounted && __jsx(EditorJs, {
+      className: "editor",
+      instanceRef: instance => this.editorInstance = instance,
+      placeholder: "Add your creative explanation",
+      tools: _EditorTools__WEBPACK_IMPORTED_MODULE_3__["EDITOR_JS_TOOLS"],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 69
       },
       __self: this
     }), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
       id: "847575237",
       __self: this
-    }, ".wrapper.jsx-847575237{border:1px solid #ddd;border-radius:5px;width:550px;margin-top:10px;}.header.jsx-847575237{background:#fafafa;padding:3px 8px;min-height:39px;border-radius:5px 5px 0 0;border-bottom:1px solid #ddd;}.attribution.jsx-847575237{position:relative;top:5px;left:5px;}.attributionAvatar.jsx-847575237{width:50px;border-radius:50px;display:inline-block;}.attributionUsername.jsx-847575237{display:inline-block;margin-left:10px;position:relative;bottom:15px;}.editor.jsx-847575237{padding:5px 20px 5px 20px;border-radius:0 0 5px 5px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvY29tcG9uZW50cy9FZGl0b3IuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBaUVvQixBQUdtQyxBQU1ILEFBT0QsQUFLUCxBQUtVLEFBTUssV0FWUCxPQUxYLENBUFEsRUFpQkMsQ0F2QkMsSUFjVCxBQWVpQixJQVZMLEtBWkwsQUFRbEIsR0FTb0IsRUF2Qk4sV0FPYyxBQVk1QixDQWxCa0IsQUE0QmxCLElBTGMsWUF0QmQsQUF1QkEsU0FqQitCLDZCQUMvQiIsImZpbGUiOiIvVXNlcnMvZGFuaWdyYW50L1Byb2plY3RzL2V4cGxhaW50aGlzL2NvbXBvbmVudHMvRWRpdG9yLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IGR5bmFtaWMgZnJvbSAnbmV4dC9keW5hbWljJ1xuXG4vLyBpbXBvcnQgRWRpdG9ySnMgZnJvbSAncmVhY3QtZWRpdG9yLWpzJ1xuLy8gaW1wb3J0IEVtYmVkIGZyb20gJ0BlZGl0b3Jqcy9lbWJlZCdcbi8vIGltcG9ydCBDb2RlIGZyb20gJ0BlZGl0b3Jqcy9jb2RlJ1xuLy8gaW1wb3J0IExpbmtUb29sIGZyb20gJ0BlZGl0b3Jqcy9saW5rJ1xuLy8gaW1wb3J0IFNpbXBsZUltYWdlIGZyb20gJ0BlZGl0b3Jqcy9zaW1wbGUtaW1hZ2UnXG5cbmNvbnN0IEVkaXRvckpzID0gZHluYW1pYyhcbiAgKCkgPT4gaW1wb3J0KCdyZWFjdC1lZGl0b3ItanMnKSxcbiAgeyBzc3I6IGZhbHNlIH1cbilcblxuY29uc3QgRW1iZWQgPSBkeW5hbWljKFxuICAoKSA9PiBpbXBvcnQoJ0BlZGl0b3Jqcy9lbWJlZCcpLFxuICB7IHNzcjogZmFsc2UgfVxuKVxuXG5jb25zdCBDb2RlID0gZHluYW1pYyhcbiAgKCkgPT4gaW1wb3J0KCdAZWRpdG9yanMvY29kZScpLFxuICB7IHNzcjogZmFsc2UgfVxuKVxuXG5jb25zdCBMaW5rVG9vbCA9IGR5bmFtaWMoXG4gICgpID0+IGltcG9ydCgnQGVkaXRvcmpzL2xpbmsnKSxcbiAgeyBzc3I6IGZhbHNlIH1cbilcblxuY29uc3QgU2ltcGxlSW1hZ2UgPSBkeW5hbWljKFxuICAoKSA9PiBpbXBvcnQoJ0BlZGl0b3Jqcy9zaW1wbGUtaW1hZ2UnKSxcbiAgeyBzc3I6IGZhbHNlIH1cbilcblxuXG5jbGFzcyBFZGl0b3IgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuICBjb25zdHJ1Y3Rvcihwcm9wcykge1xuICAgIHN1cGVyKHByb3BzKVxuICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICBpc01vdW50ZWQ6IGZhbHNlXG4gICAgfVxuICB9XG4gIGNvbXBvbmVudFdpbGxNb3VudCgpIHtcbiAgICB0aGlzLnNldFN0YXRlKHtcbiAgICAgIGlzTW91bnRlZDogZmFsc2VcbiAgICB9KVxuICB9XG4gIGNvbXBvbmVudERpZE1vdW50KCkge1xuICAgIHRoaXMuc2V0U3RhdGUoe1xuICAgICAgaXNNb3VudGVkOiB0cnVlXG4gICAgfSlcbiAgfVxuICByZW5kZXIoKSB7XG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwid3JhcHBlclwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhlYWRlclwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYXR0cmlidXRpb25cIj5cbiAgICAgICAgICAgIDxpbWcgY2xhc3NOYW1lPVwiYXR0cmlidXRpb25BdmF0YXJcIiBzcmM9XCJodHRwczovL3Bicy50d2ltZy5jb20vcHJvZmlsZV9pbWFnZXMvODIyNTQ3NzMyMzc2MjA3MzYwLzVnMEZDOFhYLmpwZ1wiIC8+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJhdHRyaWJ1dGlvblVzZXJuYW1lXCI+QGJhcmFja29iYW1hPC9wPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAge1xuICAgICAgICAgIHRoaXMuc3RhdGUuaXNNb3VudGVkICYmXG4gICAgICAgICAgPEVkaXRvckpzIGNsYXNzTmFtZT1cImVkaXRvclwiIGF1dG9mb2N1cz17dHJ1ZX0gdG9vbHM9e3sgZW1iZWQ6IHsgY2xhc3M6IEVtYmVkLCBpbmxpbmVUb29sYmFyOiB0cnVlIH0sIGNvZGU6IHsgY2xhc3M6IENvZGUsIGlubGluZVRvb2xiYXI6IHRydWUgfSwgc2ltcGxlSW1hZ2U6IHsgY2xhc3M6IFNpbXBsZUltYWdlLCBpbmxpbmVUb29sYmFyOiB0cnVlIH0sIGxpbmtUb29sOiB7IGNsYXNzOiBMaW5rVG9vbCwgaW5saW5lVG9vbGJhcjogdHJ1ZSB9IH19IC8+XG4gICAgICAgIH1cbiAgICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAgIC53cmFwcGVyIHtcbiAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICNkZGQ7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgICAgICAgICB3aWR0aDogNTUwcHg7XG4gICAgICAgICAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgICAgICAgIH1cbiAgICAgICAgICAuaGVhZGVyIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQ6ICNmYWZhZmE7XG4gICAgICAgICAgICBwYWRkaW5nOiAzcHggOHB4O1xuICAgICAgICAgICAgbWluLWhlaWdodDogMzlweDtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDVweCA1cHggMCAwO1xuICAgICAgICAgICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNkZGQ7XG4gICAgICAgICAgfVxuICAgICAgICAgIC5hdHRyaWJ1dGlvbiB7XG4gICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgICAgICB0b3A6IDVweDtcbiAgICAgICAgICAgIGxlZnQ6IDVweDtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmF0dHJpYnV0aW9uQXZhdGFyIHtcbiAgICAgICAgICAgIHdpZHRoOiA1MHB4O1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgICAgICAgICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICAgICAgICB9XG4gICAgICAgICAgLmF0dHJpYnV0aW9uVXNlcm5hbWUge1xuICAgICAgICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgICAgICAgICAgbWFyZ2luLWxlZnQ6IDEwcHg7XG4gICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgICAgICBib3R0b206IDE1cHg7XG4gICAgICAgICAgfVxuICAgICAgICAgIC5lZGl0b3Ige1xuICAgICAgICAgICAgcGFkZGluZzogNXB4IDIwcHggNXB4IDIwcHg7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAwIDAgNXB4IDVweDtcbiAgICAgICAgICB9XG4gICAgICAgIGB9PC9zdHlsZT5cbiAgICAgIDwvZGl2PlxuICAgIClcbiAgfVxufVxuXG5leHBvcnQgZGVmYXVsdCBFZGl0b3JcbiJdfQ== */\n/*@ sourceURL=/Users/danigrant/Projects/explainthis/components/Editor.js */"));
+    }, ".wrapper.jsx-847575237{border:1px solid #ddd;border-radius:5px;width:550px;margin-top:10px;}.header.jsx-847575237{background:#fafafa;padding:3px 8px;min-height:39px;border-radius:5px 5px 0 0;border-bottom:1px solid #ddd;}.attribution.jsx-847575237{position:relative;top:5px;left:5px;}.attributionAvatar.jsx-847575237{width:50px;border-radius:50px;display:inline-block;}.attributionUsername.jsx-847575237{display:inline-block;margin-left:10px;position:relative;bottom:15px;}.editor.jsx-847575237{padding:5px 20px 5px 20px;border-radius:0 0 5px 5px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvY29tcG9uZW50cy9FZGl0b3IuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBc0VvQixBQUdtQyxBQU1ILEFBT0QsQUFLUCxBQUtVLEFBTUssV0FWUCxPQUxYLENBUFEsRUFpQkMsQ0F2QkMsSUFjVCxBQWVpQixJQVZMLEtBWkwsQUFRbEIsR0FTb0IsRUF2Qk4sV0FPYyxBQVk1QixDQWxCa0IsQUE0QmxCLElBTGMsWUF0QmQsQUF1QkEsU0FqQitCLDZCQUMvQiIsImZpbGUiOiIvVXNlcnMvZGFuaWdyYW50L1Byb2plY3RzL2V4cGxhaW50aGlzL2NvbXBvbmVudHMvRWRpdG9yLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IGR5bmFtaWMgZnJvbSAnbmV4dC9keW5hbWljJ1xuaW1wb3J0IHsgRURJVE9SX0pTX1RPT0xTIH0gZnJvbSAnLi9FZGl0b3JUb29scydcblxuLy8gaW1wb3J0IEVkaXRvckpzIGZyb20gJ3JlYWN0LWVkaXRvci1qcydcbi8vIGltcG9ydCBFbWJlZCBmcm9tICdAZWRpdG9yanMvZW1iZWQnXG4vLyBpbXBvcnQgQ29kZSBmcm9tICdAZWRpdG9yanMvY29kZSdcbi8vIGltcG9ydCBMaW5rVG9vbCBmcm9tICdAZWRpdG9yanMvbGluaydcbi8vIGltcG9ydCBTaW1wbGVJbWFnZSBmcm9tICdAZWRpdG9yanMvc2ltcGxlLWltYWdlJ1xuXG5jb25zdCBFZGl0b3JKcyA9IGR5bmFtaWMoXG4gICgpID0+IGltcG9ydCgncmVhY3QtZWRpdG9yLWpzJyksXG4gIHsgc3NyOiBmYWxzZSB9XG4pXG5cbmNvbnN0IEVtYmVkID0gZHluYW1pYyhcbiAgKCkgPT4gaW1wb3J0KCdAZWRpdG9yanMvZW1iZWQnKSxcbiAgeyBzc3I6IGZhbHNlIH1cbilcblxuY29uc3QgQ29kZSA9IGR5bmFtaWMoXG4gICgpID0+IGltcG9ydCgnQGVkaXRvcmpzL2NvZGUnKSxcbiAgeyBzc3I6IGZhbHNlIH1cbilcblxuY29uc3QgTGlua1Rvb2wgPSBkeW5hbWljKFxuICAoKSA9PiBpbXBvcnQoJ0BlZGl0b3Jqcy9saW5rJyksXG4gIHsgc3NyOiBmYWxzZSB9XG4pXG5cbmNvbnN0IFNpbXBsZUltYWdlID0gZHluYW1pYyhcbiAgKCkgPT4gaW1wb3J0KCdAZWRpdG9yanMvc2ltcGxlLWltYWdlJyksXG4gIHsgc3NyOiBmYWxzZSB9XG4pXG5cblxuY2xhc3MgRWRpdG9yIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcylcbiAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgaXNNb3VudGVkOiBmYWxzZVxuICAgIH1cbiAgfVxuICBjb21wb25lbnRXaWxsTW91bnQoKSB7XG4gICAgdGhpcy5zZXRTdGF0ZSh7XG4gICAgICBpc01vdW50ZWQ6IGZhbHNlXG4gICAgfSlcbiAgfVxuICBjb21wb25lbnREaWRNb3VudCgpIHtcbiAgICB0aGlzLnNldFN0YXRlKHtcbiAgICAgIGlzTW91bnRlZDogdHJ1ZVxuICAgIH0pXG4gIH1cbiAgYXN5bmMgaGFuZGxlU2F2ZSgpIHtcbiAgICBjb25zdCBzYXZlZERhdGEgPSBhd2FpdCB0aGlzLmVkaXRvckluc3RhbmNlLnNhdmUoKTtcbiAgfVxuICByZW5kZXIoKSB7XG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwid3JhcHBlclwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhlYWRlclwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYXR0cmlidXRpb25cIj5cbiAgICAgICAgICAgIDxpbWcgY2xhc3NOYW1lPVwiYXR0cmlidXRpb25BdmF0YXJcIiBzcmM9XCJodHRwczovL3Bicy50d2ltZy5jb20vcHJvZmlsZV9pbWFnZXMvODIyNTQ3NzMyMzc2MjA3MzYwLzVnMEZDOFhYLmpwZ1wiIC8+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJhdHRyaWJ1dGlvblVzZXJuYW1lXCI+QGJhcmFja29iYW1hPC9wPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDxkaXYgb25DbGljaz17dGhpcy5oYW5kbGVTYXZlfT5zdWJtaXQgYnV0dG9uPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgICB7XG4gICAgICAgICAgdGhpcy5zdGF0ZS5pc01vdW50ZWQgJiZcbiAgICAgICAgICA8RWRpdG9ySnMgY2xhc3NOYW1lPVwiZWRpdG9yXCIgaW5zdGFuY2VSZWY9e2luc3RhbmNlID0+IHRoaXMuZWRpdG9ySW5zdGFuY2UgPSBpbnN0YW5jZX0gcGxhY2Vob2xkZXI9J0FkZCB5b3VyIGNyZWF0aXZlIGV4cGxhbmF0aW9uJyB0b29scz17RURJVE9SX0pTX1RPT0xTfSAvPlxuICAgICAgICB9XG4gICAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgICAud3JhcHBlciB7XG4gICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjZGRkO1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgICAgICAgICAgd2lkdGg6IDU1MHB4O1xuICAgICAgICAgICAgbWFyZ2luLXRvcDogMTBweDtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmhlYWRlciB7XG4gICAgICAgICAgICBiYWNrZ3JvdW5kOiAjZmFmYWZhO1xuICAgICAgICAgICAgcGFkZGluZzogM3B4IDhweDtcbiAgICAgICAgICAgIG1pbi1oZWlnaHQ6IDM5cHg7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggNXB4IDAgMDtcbiAgICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZGRkO1xuICAgICAgICAgIH1cbiAgICAgICAgICAuYXR0cmlidXRpb24ge1xuICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICAgICAgdG9wOiA1cHg7XG4gICAgICAgICAgICBsZWZ0OiA1cHg7XG4gICAgICAgICAgfVxuICAgICAgICAgIC5hdHRyaWJ1dGlvbkF2YXRhciB7XG4gICAgICAgICAgICB3aWR0aDogNTBweDtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDUwcHg7XG4gICAgICAgICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgICAgICAgfVxuICAgICAgICAgIC5hdHRyaWJ1dGlvblVzZXJuYW1lIHtcbiAgICAgICAgICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICAgICAgICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICAgICAgYm90dG9tOiAxNXB4O1xuICAgICAgICAgIH1cbiAgICAgICAgICAuZWRpdG9yIHtcbiAgICAgICAgICAgIHBhZGRpbmc6IDVweCAyMHB4IDVweCAyMHB4O1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMCAwIDVweCA1cHg7XG4gICAgICAgICAgfVxuICAgICAgICBgfTwvc3R5bGU+XG4gICAgICA8L2Rpdj5cbiAgICApXG4gIH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgRWRpdG9yXG4iXX0= */\n/*@ sourceURL=/Users/danigrant/Projects/explainthis/components/Editor.js */"));
   }
 
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Editor);
+
+/***/ }),
+
+/***/ "./components/EditorTools.js":
+/*!***********************************!*\
+  !*** ./components/EditorTools.js ***!
+  \***********************************/
+/*! exports provided: EDITOR_JS_TOOLS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITOR_JS_TOOLS", function() { return EDITOR_JS_TOOLS; });
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dynamic */ "next/dynamic");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_0__);
+
+const Embed = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/embed */ "@editorjs/embed", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/embed */ "@editorjs/embed")],
+    modules: ['@editorjs/embed']
+  }
+});
+const Table = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/table */ "@editorjs/table", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/table */ "@editorjs/table")],
+    modules: ['@editorjs/table']
+  }
+});
+const Paragraph = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/paragraph */ "@editorjs/paragraph", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/paragraph */ "@editorjs/paragraph")],
+    modules: ['@editorjs/paragraph']
+  }
+});
+const List = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/list */ "@editorjs/list", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/list */ "@editorjs/list")],
+    modules: ['@editorjs/list']
+  }
+});
+const Warning = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/warning */ "@editorjs/warning", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/warning */ "@editorjs/warning")],
+    modules: ['@editorjs/warning']
+  }
+});
+const Code = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/code */ "@editorjs/code", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/code */ "@editorjs/code")],
+    modules: ['@editorjs/code']
+  }
+});
+const LinkTool = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/link */ "@editorjs/link", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/link */ "@editorjs/link")],
+    modules: ['@editorjs/link']
+  }
+});
+const Image = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/image */ "@editorjs/image", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/image */ "@editorjs/image")],
+    modules: ['@editorjs/image']
+  }
+});
+const Raw = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/raw */ "@editorjs/raw", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/raw */ "@editorjs/raw")],
+    modules: ['@editorjs/raw']
+  }
+});
+const Header = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/header */ "@editorjs/header", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/header */ "@editorjs/header")],
+    modules: ['@editorjs/header']
+  }
+});
+const Quote = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/quote */ "@editorjs/quote", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/quote */ "@editorjs/quote")],
+    modules: ['@editorjs/quote']
+  }
+});
+const Marker = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/marker */ "@editorjs/marker", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/marker */ "@editorjs/marker")],
+    modules: ['@editorjs/marker']
+  }
+});
+const CheckList = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/checklist */ "@editorjs/checklist", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/checklist */ "@editorjs/checklist")],
+    modules: ['@editorjs/checklist']
+  }
+});
+const Delimiter = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/delimiter */ "@editorjs/delimiter", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/delimiter */ "@editorjs/delimiter")],
+    modules: ['@editorjs/delimiter']
+  }
+});
+const InlineCode = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/inline-code */ "@editorjs/inline-code", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/inline-code */ "@editorjs/inline-code")],
+    modules: ['@editorjs/inline-code']
+  }
+});
+const SimpleImage = next_dynamic__WEBPACK_IMPORTED_MODULE_0___default()(() => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(null, /*! @editorjs/simple-image */ "@editorjs/simple-image", 7)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(/*! @editorjs/simple-image */ "@editorjs/simple-image")],
+    modules: ['@editorjs/simple-image']
+  }
+});
+const EDITOR_JS_TOOLS = {
+  embed: Embed,
+  table: Table,
+  paragraph: Paragraph,
+  list: List,
+  warning: Warning,
+  code: Code,
+  linkTool: LinkTool,
+  image: Image,
+  raw: Raw,
+  header: Header,
+  quote: Quote,
+  marker: Marker,
+  checklist: CheckList,
+  delimiter: Delimiter,
+  inlineCode: InlineCode,
+  simpleImage: SimpleImage
+};
 
 /***/ }),
 
@@ -2642,6 +2786,17 @@ module.exports = __webpack_require__(/*! /Users/danigrant/Projects/explainthis/p
 
 /***/ }),
 
+/***/ "@editorjs/checklist":
+/*!**************************************!*\
+  !*** external "@editorjs/checklist" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/checklist");
+
+/***/ }),
+
 /***/ "@editorjs/code":
 /*!*********************************!*\
   !*** external "@editorjs/code" ***!
@@ -2650,6 +2805,17 @@ module.exports = __webpack_require__(/*! /Users/danigrant/Projects/explainthis/p
 /***/ (function(module, exports) {
 
 module.exports = require("@editorjs/code");
+
+/***/ }),
+
+/***/ "@editorjs/delimiter":
+/*!**************************************!*\
+  !*** external "@editorjs/delimiter" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/delimiter");
 
 /***/ }),
 
@@ -2664,6 +2830,39 @@ module.exports = require("@editorjs/embed");
 
 /***/ }),
 
+/***/ "@editorjs/header":
+/*!***********************************!*\
+  !*** external "@editorjs/header" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/header");
+
+/***/ }),
+
+/***/ "@editorjs/image":
+/*!**********************************!*\
+  !*** external "@editorjs/image" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/image");
+
+/***/ }),
+
+/***/ "@editorjs/inline-code":
+/*!****************************************!*\
+  !*** external "@editorjs/inline-code" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/inline-code");
+
+/***/ }),
+
 /***/ "@editorjs/link":
 /*!*********************************!*\
   !*** external "@editorjs/link" ***!
@@ -2675,6 +2874,61 @@ module.exports = require("@editorjs/link");
 
 /***/ }),
 
+/***/ "@editorjs/list":
+/*!*********************************!*\
+  !*** external "@editorjs/list" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/list");
+
+/***/ }),
+
+/***/ "@editorjs/marker":
+/*!***********************************!*\
+  !*** external "@editorjs/marker" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/marker");
+
+/***/ }),
+
+/***/ "@editorjs/paragraph":
+/*!**************************************!*\
+  !*** external "@editorjs/paragraph" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/paragraph");
+
+/***/ }),
+
+/***/ "@editorjs/quote":
+/*!**********************************!*\
+  !*** external "@editorjs/quote" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/quote");
+
+/***/ }),
+
+/***/ "@editorjs/raw":
+/*!********************************!*\
+  !*** external "@editorjs/raw" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/raw");
+
+/***/ }),
+
 /***/ "@editorjs/simple-image":
 /*!*****************************************!*\
   !*** external "@editorjs/simple-image" ***!
@@ -2683,6 +2937,28 @@ module.exports = require("@editorjs/link");
 /***/ (function(module, exports) {
 
 module.exports = require("@editorjs/simple-image");
+
+/***/ }),
+
+/***/ "@editorjs/table":
+/*!**********************************!*\
+  !*** external "@editorjs/table" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/table");
+
+/***/ }),
+
+/***/ "@editorjs/warning":
+/*!************************************!*\
+  !*** external "@editorjs/warning" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@editorjs/warning");
 
 /***/ }),
 

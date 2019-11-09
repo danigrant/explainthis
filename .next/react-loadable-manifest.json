@@ -7,12 +7,28 @@
       "publicPath": "static/chunks/0.js"
     }
   ],
+  "@editorjs/checklist": [
+    {
+      "id": "./node_modules/@editorjs/checklist/dist/bundle.js",
+      "name": "./node_modules/@editorjs/checklist/dist/bundle.js",
+      "file": "static/chunks/6.js",
+      "publicPath": "static/chunks/6.js"
+    }
+  ],
   "@editorjs/code": [
     {
       "id": "./node_modules/@editorjs/code/dist/bundle.js",
       "name": "./node_modules/@editorjs/code/dist/bundle.js",
       "file": "static/chunks/2.js",
       "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "@editorjs/delimiter": [
+    {
+      "id": "./node_modules/@editorjs/delimiter/dist/bundle.js",
+      "name": "./node_modules/@editorjs/delimiter/dist/bundle.js",
+      "file": "static/chunks/7.js",
+      "publicPath": "static/chunks/7.js"
     }
   ],
   "@editorjs/embed": [
@@ -23,6 +39,30 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
+  "@editorjs/header": [
+    {
+      "id": "./node_modules/@editorjs/header/dist/bundle.js",
+      "name": "./node_modules/@editorjs/header/dist/bundle.js",
+      "file": "static/chunks/8.js",
+      "publicPath": "static/chunks/8.js"
+    }
+  ],
+  "@editorjs/image": [
+    {
+      "id": "./node_modules/@editorjs/image/dist/bundle.js",
+      "name": "./node_modules/@editorjs/image/dist/bundle.js",
+      "file": "static/chunks/9.js",
+      "publicPath": "static/chunks/9.js"
+    }
+  ],
+  "@editorjs/inline-code": [
+    {
+      "id": "./node_modules/@editorjs/inline-code/dist/bundle.js",
+      "name": "./node_modules/@editorjs/inline-code/dist/bundle.js",
+      "file": "static/chunks/10.js",
+      "publicPath": "static/chunks/10.js"
+    }
+  ],
   "@editorjs/link": [
     {
       "id": "./node_modules/@editorjs/link/dist/bundle.js",
@@ -31,12 +71,68 @@
       "publicPath": "static/chunks/4.js"
     }
   ],
+  "@editorjs/list": [
+    {
+      "id": "./node_modules/@editorjs/list/dist/bundle.js",
+      "name": "./node_modules/@editorjs/list/dist/bundle.js",
+      "file": "static/chunks/11.js",
+      "publicPath": "static/chunks/11.js"
+    }
+  ],
+  "@editorjs/marker": [
+    {
+      "id": "./node_modules/@editorjs/marker/dist/bundle.js",
+      "name": "./node_modules/@editorjs/marker/dist/bundle.js",
+      "file": "static/chunks/12.js",
+      "publicPath": "static/chunks/12.js"
+    }
+  ],
+  "@editorjs/paragraph": [
+    {
+      "id": "./node_modules/@editorjs/paragraph/dist/bundle.js",
+      "name": "./node_modules/@editorjs/paragraph/dist/bundle.js",
+      "file": "static/chunks/13.js",
+      "publicPath": "static/chunks/13.js"
+    }
+  ],
+  "@editorjs/quote": [
+    {
+      "id": "./node_modules/@editorjs/quote/dist/bundle.js",
+      "name": "./node_modules/@editorjs/quote/dist/bundle.js",
+      "file": "static/chunks/14.js",
+      "publicPath": "static/chunks/14.js"
+    }
+  ],
+  "@editorjs/raw": [
+    {
+      "id": "./node_modules/@editorjs/raw/dist/bundle.js",
+      "name": "./node_modules/@editorjs/raw/dist/bundle.js",
+      "file": "static/chunks/15.js",
+      "publicPath": "static/chunks/15.js"
+    }
+  ],
   "@editorjs/simple-image": [
     {
       "id": "./node_modules/@editorjs/simple-image/dist/bundle.js",
       "name": "./node_modules/@editorjs/simple-image/dist/bundle.js",
       "file": "static/chunks/5.js",
       "publicPath": "static/chunks/5.js"
+    }
+  ],
+  "@editorjs/table": [
+    {
+      "id": "./node_modules/@editorjs/table/dist/bundle.js",
+      "name": "./node_modules/@editorjs/table/dist/bundle.js",
+      "file": "static/chunks/16.js",
+      "publicPath": "static/chunks/16.js"
+    }
+  ],
+  "@editorjs/warning": [
+    {
+      "id": "./node_modules/@editorjs/warning/dist/bundle.js",
+      "name": "./node_modules/@editorjs/warning/dist/bundle.js",
+      "file": "static/chunks/17.js",
+      "publicPath": "static/chunks/17.js"
     }
   ],
   "react-editor-js": [
