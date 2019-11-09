@@ -4,7 +4,7 @@ import AppContainer from '../components/AppContainer';
 import ActionBar from '../components/ActionBar'
 import ExplanationsSection from '../components/ExplanationsSection'
 import mockData from '../mockconceptdata'
-import TempAddAnswer from './TempAddAnswer'
+import Editor from '../components/Editor'
 import getConcept from '../components/Firebase'
 
 
@@ -35,7 +35,7 @@ class ExplainThis extends React.Component {
             <h1>What are all the different ways to explain {mockData.concept}?</h1>
             <ActionBar handleAnswerClick={this.handleAnswerClick} />
             { this.state.showEditor &&
-              <TempAddAnswer />
+              <Editor />
             }
             <p>{JSON.stringify(this.state.data[0])}</p>
             <p>{mockData.explanations.length} Explanations</p>
