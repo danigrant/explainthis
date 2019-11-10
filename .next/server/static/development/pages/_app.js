@@ -138,19 +138,11 @@ async function getConceptExplanations(concept) {
       "author": docData.author,
       "datetime": docData.datetime,
       "explanation": docData.explanation,
-      "score": docData.score
+      "score": docData.score,
+      "id": doc.id
     });
   });
   return data;
-}
-
-async function getConceptDocID(concept) {
-  let snapshot = await conceptsRef.where('concept', '==', concept).get();
-  let data = [];
-  await snapshot.forEach(doc => {
-    data.push(doc.id);
-  });
-  return data[0];
 } // saves explanation to db
 
 
@@ -182,26 +174,41 @@ async function saveExplanationToDB(concept, author, explanation) {
 // }
 
 
-async function addVote(concept, explanationID) {
-  let docID = await getConceptDocID(concept);
-  let conceptRef = conceptsRef.doc(docID);
-  let vote = {
-    "datetime": firebase.firestore.Timestamp.now(),
-    "user": "@barackobama",
-    "vote": 1
-  };
-  let snapshot = await conceptsRef.get();
+async function getConceptDocID(concept) {
+  let snapshot = await conceptsRef.where('concept', '==', concept).get();
   let data = [];
   await snapshot.forEach(doc => {
-    data.push(doc.id, doc.data(), doc);
+    data.push(doc.id);
   });
-  console.log(data);
-  return data;
+  return data[0];
+}
+
+async function addVote(vote, user, explanationID) {
+  let explanationRef = explanationsRef.doc(explanationID);
+  let newVote = {
+    "datetime": firebase.firestore.Timestamp.now(),
+    "user": user,
+    "vote": vote
+  };
+  explanationRef.update({
+    voteLog: firebase.firestore.FieldValue.arrayUnion(newVote)
+  });
+  const decrement = firebase.firestore.FieldValue.increment(-1);
+
+  if (vote > 0) {
+    explanationRef.update({
+      score: increment
+    });
+  } else {
+    explanationRef.update({
+      score: decrement
+    });
+  }
 }
 
 const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
-void async function main() {// console.log(await getConceptExplanations("emergence"))
+void async function main() {// addVote(-1, "@barackobama", '8YFuRoNai30HMQrUIm76')
 }();
 module.exports = {
   getConceptExplanations,

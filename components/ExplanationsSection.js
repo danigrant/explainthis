@@ -4,9 +4,9 @@ function ExplanationsSection(props) {
   return (
     <div className="explanationsSection">
      {
-       props.explanations.map((e, index) => {
+       props.explanations.map((e) => {
          return (
-           <div className="explanation" id={`explanation-${index}`}>
+           <div className="explanation" id={`explanation-${e.id}`}>
              <div className="attribution">
                <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
                <p className="attributionUsername">{e.author}</p>

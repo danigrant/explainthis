@@ -41,7 +41,8 @@ var explanationsRef = db.collection('explanations'); // returns obj with all exp
 
 function getConceptExplanations(_x) {
   return _getConceptExplanations.apply(this, arguments);
-}
+} // saves explanation to db
+
 
 function _getConceptExplanations() {
   _getConceptExplanations = (0, _asyncToGenerator2["default"])(
@@ -68,7 +69,8 @@ function _getConceptExplanations() {
                 "author": docData.author,
                 "datetime": docData.datetime,
                 "explanation": docData.explanation,
-                "score": docData.score
+                "score": docData.score,
+                "id": doc.id
               });
             });
 
@@ -85,45 +87,7 @@ function _getConceptExplanations() {
   return _getConceptExplanations.apply(this, arguments);
 }
 
-function getConceptDocID(_x2) {
-  return _getConceptDocID.apply(this, arguments);
-} // saves explanation to db
-
-
-function _getConceptDocID() {
-  _getConceptDocID = (0, _asyncToGenerator2["default"])(
-  /*#__PURE__*/
-  _regenerator["default"].mark(function _callee3(concept) {
-    var snapshot, data;
-    return _regenerator["default"].wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return conceptsRef.where('concept', '==', concept).get();
-
-          case 2:
-            snapshot = _context3.sent;
-            data = [];
-            _context3.next = 6;
-            return snapshot.forEach(function (doc) {
-              data.push(doc.id);
-            });
-
-          case 6:
-            return _context3.abrupt("return", data[0]);
-
-          case 7:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _getConceptDocID.apply(this, arguments);
-}
-
-function saveExplanationToDB(_x3, _x4, _x5) {
+function saveExplanationToDB(_x2, _x3, _x4) {
   return _saveExplanationToDB.apply(this, arguments);
 } // async function saveExplanationToDB(concept, author, explanation) {
 //   let docID = await getConceptDocID(concept)
@@ -146,11 +110,11 @@ function saveExplanationToDB(_x3, _x4, _x5) {
 function _saveExplanationToDB() {
   _saveExplanationToDB = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator["default"].mark(function _callee4(concept, author, explanation) {
+  _regenerator["default"].mark(function _callee3(concept, author, explanation) {
     var newExplanation;
-    return _regenerator["default"].wrap(function _callee4$(_context4) {
+    return _regenerator["default"].wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
             newExplanation = {
               "concept": concept,
@@ -164,54 +128,86 @@ function _saveExplanationToDB() {
 
           case 2:
           case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _saveExplanationToDB.apply(this, arguments);
+}
+
+function getConceptDocID(_x5) {
+  return _getConceptDocID.apply(this, arguments);
+}
+
+function _getConceptDocID() {
+  _getConceptDocID = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee4(concept) {
+    var snapshot, data;
+    return _regenerator["default"].wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return conceptsRef.where('concept', '==', concept).get();
+
+          case 2:
+            snapshot = _context4.sent;
+            data = [];
+            _context4.next = 6;
+            return snapshot.forEach(function (doc) {
+              data.push(doc.id);
+            });
+
+          case 6:
+            return _context4.abrupt("return", data[0]);
+
+          case 7:
+          case "end":
             return _context4.stop();
         }
       }
     }, _callee4);
   }));
-  return _saveExplanationToDB.apply(this, arguments);
+  return _getConceptDocID.apply(this, arguments);
 }
 
-function addVote(_x6, _x7) {
+function addVote(_x6, _x7, _x8) {
   return _addVote.apply(this, arguments);
 }
 
 function _addVote() {
   _addVote = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator["default"].mark(function _callee5(concept, explanationID) {
-    var docID, conceptRef, vote, snapshot, data;
+  _regenerator["default"].mark(function _callee5(vote, user, explanationID) {
+    var explanationRef, newVote, decrement;
     return _regenerator["default"].wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            _context5.next = 2;
-            return getConceptDocID(concept);
-
-          case 2:
-            docID = _context5.sent;
-            conceptRef = conceptsRef.doc(docID);
-            vote = {
+            explanationRef = explanationsRef.doc(explanationID);
+            newVote = {
               "datetime": firebase.firestore.Timestamp.now(),
-              "user": "@barackobama",
-              "vote": 1
+              "user": user,
+              "vote": vote
             };
-            _context5.next = 7;
-            return conceptsRef.get();
-
-          case 7:
-            snapshot = _context5.sent;
-            data = [];
-            _context5.next = 11;
-            return snapshot.forEach(function (doc) {
-              data.push(doc.id, doc.data(), doc);
+            explanationRef.update({
+              voteLog: firebase.firestore.FieldValue.arrayUnion(newVote)
             });
+            decrement = firebase.firestore.FieldValue.increment(-1);
 
-          case 11:
-            console.log(data);
-            return _context5.abrupt("return", data);
+            if (vote > 0) {
+              explanationRef.update({
+                score: increment
+              });
+            } else {
+              explanationRef.update({
+                score: decrement
+              });
+            }
 
-          case 13:
+          case 5:
           case "end":
             return _context5.stop();
         }
