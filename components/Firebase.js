@@ -19,17 +19,6 @@ const db = firebase.firestore();
 const conceptsRef = db.collection('concepts');
 const explanationsRef = db.collection('explanations')
 
-// returns all of the explanations for one concept
-// ARCHIVE
-async function getConcept(concept) {
-  let snapshot = await conceptsRef.where('concept', '==', concept).get()
-  let data = []
-  await snapshot.forEach(doc => {
-    data.push(doc.data())
-  })
-  return data
-}
-
 // returns obj with all explanations for one topic, ordered by voteCount
 async function getConceptExplanations(concept) {
   let snapshot = await explanationsRef.where('concept', '==', concept).get()
@@ -58,22 +47,36 @@ async function getConceptDocID(concept) {
   return data[0]
 }
 
+// saves explanation to db
 async function saveExplanationToDB(concept, author, explanation) {
-  let docID = await getConceptDocID(concept)
-
-  let conceptRef = conceptsRef.doc(docID)
-
   let newExplanation = {
+    "concept": concept,
     "author": author,
     "datetime": firebase.firestore.Timestamp.now(),
     "explanation": explanation,
-    voteLog: []
+    "score": 0,
+    "voteLog": []
   }
 
-  conceptRef.update({
-    explanations: firebase.firestore.FieldValue.arrayUnion(newExplanation)
-  });
+  explanationsRef.add(newExplanation)
 }
+
+// async function saveExplanationToDB(concept, author, explanation) {
+//   let docID = await getConceptDocID(concept)
+//
+//   let conceptRef = conceptsRef.doc(docID)
+//
+//   let newExplanation = {
+//     "author": author,
+//     "datetime": firebase.firestore.Timestamp.now(),
+//     "explanation": explanation,
+//     voteLog: []
+//   }
+//
+//   conceptRef.update({
+//     explanations: firebase.firestore.FieldValue.arrayUnion(newExplanation)
+//   });
+// }
 
 async function addVote(concept, explanationID) {
   let docID = await getConceptDocID(concept)

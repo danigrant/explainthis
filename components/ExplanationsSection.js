@@ -17,12 +17,10 @@ function ExplanationsSection(props) {
              <div className="explanationActionBar">
                <div className="explanationAction">
                  <img src="/images/get-it-face.png" />
-                 <p>Yay this helps! I get it.</p>
-                 {e.score > 0 && <p>{e.score}</p>}
+                 {e.score > 0 && <p className="score">+ {e.score}</p>}
                </div>
                <div className="explanationAction">
                  <img src="/images/dont-get-it-face.png"/>
-                 <p>Booo, did not help. I do not get it yet.</p>
                </div>
              </div>
            </div>
@@ -49,7 +47,10 @@ function ExplanationsSection(props) {
           margin-left: 10px;
         }
         .explanationMeat {
-          padding-bottom: 10px;
+          padding-bottom: 5px;
+        }
+        .explanationActionBar {
+          padding-bottom: 20px;
         }
         .explanationAction {
           display: inline-block;
@@ -68,7 +69,7 @@ function ExplanationsSection(props) {
         .explanationAction p {
           display: inline-block;
         }
-        .explanationAction:hover {
+        explanationAction:hover {
           transform: scale(1.1);
           transform-origin: center;
           filter: brightness(115%);
@@ -76,6 +77,10 @@ function ExplanationsSection(props) {
         }
         .explanationAction:active:first-child {
           transform: rotate(180deg)
+        }
+        .score {
+          margin-right: 10px;
+          color: #bbb;
         }
 
       `}</style>
