@@ -19,8 +19,6 @@ const db = firebase.firestore();
 const conceptsRef = db.collection('concepts');
 
 async function getConcept(concept) {
-  let tempConcept = ''
-
   let snapshot = await conceptsRef.where('concept', '==', concept).get()
   let data = []
   await snapshot.forEach(doc => {
@@ -29,15 +27,39 @@ async function getConcept(concept) {
   return data
 }
 
-async function saveExplanationToDB() {
+async function getConceptDocID(concept) {
+  let snapshot = await conceptsRef.where('concept', '==', concept).get()
+  let data = []
+  await snapshot.forEach(doc => {
+    data.push(doc.id)
+  })
+  return data[0]
+}
 
+async function saveExplanationToDB(concept, author, explanation) {
+  let docID = await getConceptDocID(concept)
+
+  let conceptRef = conceptsRef.doc(docID)
+
+  let newExplanation = {
+    "author": author,
+    "datetime": firebase.firestore.Timestamp.now(),
+    "explanation": explanation,
+    voteLog: []
+  }
+
+  conceptRef.update({
+    explanations: firebase.firestore.FieldValue.arrayUnion(newExplanation)
+  });
 }
 
 const provider = new firebase.auth.TwitterAuthProvider();
 
 // todo sign in with twitter
 
-
+void async function main() {
+  // saveExplanationToDB("emergence", "@barackobama", "this is my second best explanation")
+}()
 module.exports = { getConcept, saveExplanationToDB }
 
 

@@ -45,60 +45,135 @@ function getConcept(_x) {
 function _getConcept() {
   _getConcept = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator["default"].mark(function _callee(concept) {
-    var tempConcept, snapshot, data;
-    return _regenerator["default"].wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            tempConcept = '';
-            _context.next = 3;
-            return conceptsRef.where('concept', '==', concept).get();
-
-          case 3:
-            snapshot = _context.sent;
-            data = [];
-            _context.next = 7;
-            return snapshot.forEach(function (doc) {
-              data.push(doc.data());
-            });
-
-          case 7:
-            return _context.abrupt("return", data);
-
-          case 8:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _getConcept.apply(this, arguments);
-}
-
-function saveExplanationToDB() {
-  return _saveExplanationToDB.apply(this, arguments);
-}
-
-function _saveExplanationToDB() {
-  _saveExplanationToDB = (0, _asyncToGenerator2["default"])(
-  /*#__PURE__*/
-  _regenerator["default"].mark(function _callee2() {
+  _regenerator["default"].mark(function _callee2(concept) {
+    var snapshot, data;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
+            _context2.next = 2;
+            return conceptsRef.where('concept', '==', concept).get();
+
+          case 2:
+            snapshot = _context2.sent;
+            data = [];
+            _context2.next = 6;
+            return snapshot.forEach(function (doc) {
+              data.push(doc.data());
+            });
+
+          case 6:
+            return _context2.abrupt("return", data);
+
+          case 7:
           case "end":
             return _context2.stop();
         }
       }
     }, _callee2);
   }));
+  return _getConcept.apply(this, arguments);
+}
+
+function getConceptDocID(_x2) {
+  return _getConceptDocID.apply(this, arguments);
+}
+
+function _getConceptDocID() {
+  _getConceptDocID = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee3(concept) {
+    var snapshot, data;
+    return _regenerator["default"].wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return conceptsRef.where('concept', '==', concept).get();
+
+          case 2:
+            snapshot = _context3.sent;
+            data = [];
+            _context3.next = 6;
+            return snapshot.forEach(function (doc) {
+              data.push(doc.id);
+            });
+
+          case 6:
+            return _context3.abrupt("return", data[0]);
+
+          case 7:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _getConceptDocID.apply(this, arguments);
+}
+
+function saveExplanationToDB(_x3, _x4, _x5) {
+  return _saveExplanationToDB.apply(this, arguments);
+}
+
+function _saveExplanationToDB() {
+  _saveExplanationToDB = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee4(concept, author, explanation) {
+    var docID, conceptRef, newExplanation;
+    return _regenerator["default"].wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return getConceptDocID(concept);
+
+          case 2:
+            docID = _context4.sent;
+            conceptRef = conceptsRef.doc(docID);
+            newExplanation = {
+              "author": author,
+              "datetime": firebase.firestore.Timestamp.now(),
+              "explanation": explanation,
+              voteLog: []
+            };
+            conceptRef.update({
+              explanations: firebase.firestore.FieldValue.arrayUnion(newExplanation)
+            });
+
+          case 6:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
   return _saveExplanationToDB.apply(this, arguments);
 }
 
 var provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
+void function () {
+  var _main = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee() {
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  function main() {
+    return _main.apply(this, arguments);
+  }
+
+  return main;
+}()();
 module.exports = {
   getConcept: getConcept,
   saveExplanationToDB: saveExplanationToDB

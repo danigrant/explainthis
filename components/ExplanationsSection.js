@@ -1,3 +1,5 @@
+import parse from 'html-react-parser';
+
 function ExplanationsSection(props) {
   return (
     <div className="explanationsSection">
@@ -10,7 +12,7 @@ function ExplanationsSection(props) {
                <p className="attributionUsername">{e.author}</p>
              </div>
              <div className="explanationMeat">
-               <p>{e.explanation}</p>
+               {parse(e.explanation)}
              </div>
              <div className="explanationActionBar">
                <div className="explanationAction">
