@@ -16,11 +16,10 @@ class ExplainThis extends React.Component {
       data: {}
     }
   }
-  async componentDidMount() {
+  async componentWillMount() {
     this.setState({
       data: await getConceptExplanations('emergence')
     })
-    console.log(this.state.data);
   }
   handleAnswerClick = () => { // es6 so that you don't have to bind this for scope
     this.setState({

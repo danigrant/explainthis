@@ -167,6 +167,45 @@ function _addVote() {
   return _addVote.apply(this, arguments);
 }
 
+function getAllConcepts() {
+  return _getAllConcepts.apply(this, arguments);
+}
+
+function _getAllConcepts() {
+  _getAllConcepts = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee5() {
+    var data;
+    return _regenerator["default"].wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            data = [];
+            conceptsRef.get().then(function (snapshot) {
+              console.log(snapshot);
+              snapshot.forEach(function (doc) {
+                var docData = doc.data();
+                var concept = {
+                  "id": doc.id,
+                  "concept": docData.concept
+                };
+                console.log("concept: ", concept);
+                data.push(concept);
+              });
+            });
+            console.log("data in getAllConcepts: ".concat(data));
+            return _context5.abrupt("return", data);
+
+          case 4:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _getAllConcepts.apply(this, arguments);
+}
+
 var provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
 void function () {
@@ -177,6 +216,9 @@ void function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            getAllConcepts();
+
+          case 1:
           case "end":
             return _context.stop();
         }
@@ -193,7 +235,8 @@ void function () {
 module.exports = {
   getConceptExplanations: getConceptExplanations,
   saveExplanationToDB: saveExplanationToDB,
-  addVote: addVote
+  addVote: addVote,
+  getAllConcepts: getAllConcepts
 };
 
 /***/ }),
