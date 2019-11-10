@@ -89,22 +89,7 @@ function _getConceptExplanations() {
 
 function saveExplanationToDB(_x2, _x3, _x4) {
   return _saveExplanationToDB.apply(this, arguments);
-} // async function saveExplanationToDB(concept, author, explanation) {
-//   let docID = await getConceptDocID(concept)
-//
-//   let conceptRef = conceptsRef.doc(docID)
-//
-//   let newExplanation = {
-//     "author": author,
-//     "datetime": firebase.firestore.Timestamp.now(),
-//     "explanation": explanation,
-//     voteLog: []
-//   }
-//
-//   conceptRef.update({
-//     explanations: firebase.firestore.FieldValue.arrayUnion(newExplanation)
-//   });
-// }
+} // up or down votes an explanation
 
 
 function _saveExplanationToDB() {
@@ -136,56 +121,20 @@ function _saveExplanationToDB() {
   return _saveExplanationToDB.apply(this, arguments);
 }
 
-function getConceptDocID(_x5) {
-  return _getConceptDocID.apply(this, arguments);
-}
-
-function _getConceptDocID() {
-  _getConceptDocID = (0, _asyncToGenerator2["default"])(
-  /*#__PURE__*/
-  _regenerator["default"].mark(function _callee4(concept) {
-    var snapshot, data;
-    return _regenerator["default"].wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return conceptsRef.where('concept', '==', concept).get();
-
-          case 2:
-            snapshot = _context4.sent;
-            data = [];
-            _context4.next = 6;
-            return snapshot.forEach(function (doc) {
-              data.push(doc.id);
-            });
-
-          case 6:
-            return _context4.abrupt("return", data[0]);
-
-          case 7:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4);
-  }));
-  return _getConceptDocID.apply(this, arguments);
-}
-
-function addVote(_x6, _x7, _x8) {
+function addVote(_x5, _x6, _x7) {
   return _addVote.apply(this, arguments);
 }
 
 function _addVote() {
   _addVote = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator["default"].mark(function _callee5(vote, user, explanationID) {
-    var explanationRef, newVote, decrement;
-    return _regenerator["default"].wrap(function _callee5$(_context5) {
+  _regenerator["default"].mark(function _callee4(vote, user, explanationID) {
+    var explanationRef, newVote, increment, decrement;
+    return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context5.prev = _context5.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
+            console.log('vote: ', vote);
             explanationRef = explanationsRef.doc(explanationID);
             newVote = {
               "datetime": firebase.firestore.Timestamp.now(),
@@ -195,6 +144,7 @@ function _addVote() {
             explanationRef.update({
               voteLog: firebase.firestore.FieldValue.arrayUnion(newVote)
             });
+            increment = firebase.firestore.FieldValue.increment(1);
             decrement = firebase.firestore.FieldValue.increment(-1);
 
             if (vote > 0) {
@@ -207,12 +157,12 @@ function _addVote() {
               });
             }
 
-          case 5:
+          case 7:
           case "end":
-            return _context5.stop();
+            return _context4.stop();
         }
       }
-    }, _callee5);
+    }, _callee4);
   }));
   return _addVote.apply(this, arguments);
 }
@@ -242,8 +192,9 @@ void function () {
 }()();
 module.exports = {
   getConceptExplanations: getConceptExplanations,
-  saveExplanationToDB: saveExplanationToDB
-}; // https://firebase.google.com/docs/firestore/query-data/get-data
+  saveExplanationToDB: saveExplanationToDB,
+  addVote: addVote
+};
 
 /***/ }),
 

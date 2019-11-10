@@ -11,7 +11,7 @@ class Editor extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      text: '' 
+      text: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSave = this.handleSave.bind(this)

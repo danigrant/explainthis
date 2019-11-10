@@ -156,34 +156,11 @@ async function saveExplanationToDB(concept, author, explanation) {
     "voteLog": []
   };
   explanationsRef.add(newExplanation);
-} // async function saveExplanationToDB(concept, author, explanation) {
-//   let docID = await getConceptDocID(concept)
-//
-//   let conceptRef = conceptsRef.doc(docID)
-//
-//   let newExplanation = {
-//     "author": author,
-//     "datetime": firebase.firestore.Timestamp.now(),
-//     "explanation": explanation,
-//     voteLog: []
-//   }
-//
-//   conceptRef.update({
-//     explanations: firebase.firestore.FieldValue.arrayUnion(newExplanation)
-//   });
-// }
+} // up or down votes an explanation
 
-
-async function getConceptDocID(concept) {
-  let snapshot = await conceptsRef.where('concept', '==', concept).get();
-  let data = [];
-  await snapshot.forEach(doc => {
-    data.push(doc.id);
-  });
-  return data[0];
-}
 
 async function addVote(vote, user, explanationID) {
+  console.log('vote: ', vote);
   let explanationRef = explanationsRef.doc(explanationID);
   let newVote = {
     "datetime": firebase.firestore.Timestamp.now(),
@@ -193,6 +170,7 @@ async function addVote(vote, user, explanationID) {
   explanationRef.update({
     voteLog: firebase.firestore.FieldValue.arrayUnion(newVote)
   });
+  const increment = firebase.firestore.FieldValue.increment(1);
   const decrement = firebase.firestore.FieldValue.increment(-1);
 
   if (vote > 0) {
@@ -212,8 +190,9 @@ void async function main() {// addVote(-1, "@barackobama", '8YFuRoNai30HMQrUIm76
 }();
 module.exports = {
   getConceptExplanations,
-  saveExplanationToDB
-}; // https://firebase.google.com/docs/firestore/query-data/get-data
+  saveExplanationToDB,
+  addVote
+};
 
 /***/ }),
 
