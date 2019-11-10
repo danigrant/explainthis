@@ -37,10 +37,13 @@ if (!firebase.apps.length) {
 
 var db = firebase.firestore();
 var conceptsRef = db.collection('concepts');
+var explanationsRef = db.collection('explanations'); // returns all of the explanations for one concept
+// ARCHIVE
 
 function getConcept(_x) {
   return _getConcept.apply(this, arguments);
-}
+} // returns obj with all explanations for one topic, ordered by voteCount
+
 
 function _getConcept() {
   _getConcept = (0, _asyncToGenerator2["default"])(
@@ -75,12 +78,12 @@ function _getConcept() {
   return _getConcept.apply(this, arguments);
 }
 
-function getConceptDocID(_x2) {
-  return _getConceptDocID.apply(this, arguments);
+function getConceptExplanations(_x2) {
+  return _getConceptExplanations.apply(this, arguments);
 }
 
-function _getConceptDocID() {
-  _getConceptDocID = (0, _asyncToGenerator2["default"])(
+function _getConceptExplanations() {
+  _getConceptExplanations = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
   _regenerator["default"].mark(function _callee3(concept) {
     var snapshot, data;
@@ -89,18 +92,27 @@ function _getConceptDocID() {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return conceptsRef.where('concept', '==', concept).get();
+            return explanationsRef.where('concept', '==', concept).get();
 
           case 2:
             snapshot = _context3.sent;
-            data = [];
+            data = {
+              "concept": concept,
+              "explanations": []
+            };
             _context3.next = 6;
             return snapshot.forEach(function (doc) {
-              data.push(doc.id);
+              var docData = doc.data();
+              data.explanations.push({
+                "author": docData.author,
+                "datetime": docData.datetime,
+                "explanation": docData.explanation,
+                "score": docData.score
+              });
             });
 
           case 6:
-            return _context3.abrupt("return", data[0]);
+            return _context3.abrupt("return", data);
 
           case 7:
           case "end":
@@ -109,27 +121,64 @@ function _getConceptDocID() {
       }
     }, _callee3);
   }));
+  return _getConceptExplanations.apply(this, arguments);
+}
+
+function getConceptDocID(_x3) {
   return _getConceptDocID.apply(this, arguments);
 }
 
-function saveExplanationToDB(_x3, _x4, _x5) {
+function _getConceptDocID() {
+  _getConceptDocID = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee4(concept) {
+    var snapshot, data;
+    return _regenerator["default"].wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return conceptsRef.where('concept', '==', concept).get();
+
+          case 2:
+            snapshot = _context4.sent;
+            data = [];
+            _context4.next = 6;
+            return snapshot.forEach(function (doc) {
+              data.push(doc.id);
+            });
+
+          case 6:
+            return _context4.abrupt("return", data[0]);
+
+          case 7:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _getConceptDocID.apply(this, arguments);
+}
+
+function saveExplanationToDB(_x4, _x5, _x6) {
   return _saveExplanationToDB.apply(this, arguments);
 }
 
 function _saveExplanationToDB() {
   _saveExplanationToDB = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator["default"].mark(function _callee4(concept, author, explanation) {
+  _regenerator["default"].mark(function _callee5(concept, author, explanation) {
     var docID, conceptRef, newExplanation;
-    return _regenerator["default"].wrap(function _callee4$(_context4) {
+    return _regenerator["default"].wrap(function _callee5$(_context5) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context5.prev = _context5.next) {
           case 0:
-            _context4.next = 2;
+            _context5.next = 2;
             return getConceptDocID(concept);
 
           case 2:
-            docID = _context4.sent;
+            docID = _context5.sent;
             conceptRef = conceptsRef.doc(docID);
             newExplanation = {
               "author": author,
@@ -143,12 +192,61 @@ function _saveExplanationToDB() {
 
           case 6:
           case "end":
-            return _context4.stop();
+            return _context5.stop();
         }
       }
-    }, _callee4);
+    }, _callee5);
   }));
   return _saveExplanationToDB.apply(this, arguments);
+}
+
+function addVote(_x7, _x8) {
+  return _addVote.apply(this, arguments);
+}
+
+function _addVote() {
+  _addVote = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee6(concept, explanationID) {
+    var docID, conceptRef, vote, snapshot, data;
+    return _regenerator["default"].wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return getConceptDocID(concept);
+
+          case 2:
+            docID = _context6.sent;
+            conceptRef = conceptsRef.doc(docID);
+            vote = {
+              "datetime": firebase.firestore.Timestamp.now(),
+              "user": "@barackobama",
+              "vote": 1
+            };
+            _context6.next = 7;
+            return conceptsRef.get();
+
+          case 7:
+            snapshot = _context6.sent;
+            data = [];
+            _context6.next = 11;
+            return snapshot.forEach(function (doc) {
+              data.push(doc.id, doc.data(), doc);
+            });
+
+          case 11:
+            console.log(data);
+            return _context6.abrupt("return", data);
+
+          case 13:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+  return _addVote.apply(this, arguments);
 }
 
 var provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
@@ -175,7 +273,7 @@ void function () {
   return main;
 }()();
 module.exports = {
-  getConcept: getConcept,
+  getConceptExplanations: getConceptExplanations,
   saveExplanationToDB: saveExplanationToDB
 }; // https://firebase.google.com/docs/firestore/query-data/get-data
 

@@ -4,9 +4,9 @@ function ExplanationsSection(props) {
   return (
     <div className="explanationsSection">
      {
-       props.explanations.map((e) => {
+       props.explanations.map((e, index) => {
          return (
-           <div className="explanation">
+           <div className="explanation" id={`explanation-${index}`}>
              <div className="attribution">
                <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
                <p className="attributionUsername">{e.author}</p>
@@ -18,6 +18,7 @@ function ExplanationsSection(props) {
                <div className="explanationAction">
                  <img src="/images/get-it-face.png" />
                  <p>Yay this helps! I get it.</p>
+                 {e.score > 0 && <p>{e.score}</p>}
                </div>
                <div className="explanationAction">
                  <img src="/images/dont-get-it-face.png"/>

@@ -4,7 +4,7 @@ import AppContainer from '../components/AppContainer';
 import ActionBar from '../components/ActionBar'
 import ExplanationsSection from '../components/ExplanationsSection'
 import Editor from '../components/Editor'
-import { getConcept } from '../components/Firebase'
+import { getConceptExplanations } from '../components/Firebase'
 import Loading from '../components/Loading'
 
 
@@ -18,8 +18,9 @@ class ExplainThis extends React.Component {
   }
   async componentDidMount() {
     this.setState({
-      data: await getConcept('emergence')
+      data: await getConceptExplanations('emergence')
     })
+    console.log(this.state.data);
   }
   handleAnswerClick = () => { // es6 so that you don't have to bind this for scope
     this.setState({
@@ -28,7 +29,7 @@ class ExplainThis extends React.Component {
   }
   render() {
       {
-        if (!this.state.data.length) {
+        if (!this.state.data.concept) {
           return <Loading />
         }
         else {
@@ -37,14 +38,14 @@ class ExplainThis extends React.Component {
               <Header />
               <AppContainer>
                 <div className="explanationHeader">
-                  <h1>What are all the different ways to explain {this.state.data[0].concept}?</h1>
+                  <h1>What are all the different ways to explain {this.state.data.concept}?</h1>
                   <ActionBar handleAnswerClick={this.handleAnswerClick} />
                   { this.state.showEditor &&
                     <Editor />
                   }
-                  <p>{this.state.data[0].explanations.length} Explanations</p>
+                  <p>{this.state.data.explanations.length} Explanations</p>
                 </div>
-                <ExplanationsSection explanations={this.state.data[0].explanations} />
+                <ExplanationsSection explanations={this.state.data.explanations} />
               </AppContainer>
               <style jsx>{`
                 .explanationHeader {

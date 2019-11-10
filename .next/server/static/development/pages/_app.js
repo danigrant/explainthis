@@ -124,12 +124,33 @@ if (!firebase.apps.length) {
 
 const db = firebase.firestore();
 const conceptsRef = db.collection('concepts');
+const explanationsRef = db.collection('explanations'); // returns all of the explanations for one concept
+// ARCHIVE
 
 async function getConcept(concept) {
   let snapshot = await conceptsRef.where('concept', '==', concept).get();
   let data = [];
   await snapshot.forEach(doc => {
     data.push(doc.data());
+  });
+  return data;
+} // returns obj with all explanations for one topic, ordered by voteCount
+
+
+async function getConceptExplanations(concept) {
+  let snapshot = await explanationsRef.where('concept', '==', concept).get();
+  let data = {
+    "concept": concept,
+    "explanations": []
+  };
+  await snapshot.forEach(doc => {
+    let docData = doc.data();
+    data.explanations.push({
+      "author": docData.author,
+      "datetime": docData.datetime,
+      "explanation": docData.explanation,
+      "score": docData.score
+    });
   });
   return data;
 }
@@ -157,12 +178,29 @@ async function saveExplanationToDB(concept, author, explanation) {
   });
 }
 
+async function addVote(concept, explanationID) {
+  let docID = await getConceptDocID(concept);
+  let conceptRef = conceptsRef.doc(docID);
+  let vote = {
+    "datetime": firebase.firestore.Timestamp.now(),
+    "user": "@barackobama",
+    "vote": 1
+  };
+  let snapshot = await conceptsRef.get();
+  let data = [];
+  await snapshot.forEach(doc => {
+    data.push(doc.id, doc.data(), doc);
+  });
+  console.log(data);
+  return data;
+}
+
 const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
-void async function main() {// saveExplanationToDB("emergence", "@barackobama", "this is my second best explanation")
+void async function main() {// console.log(await getConceptExplanations("emergence"))
 }();
 module.exports = {
-  getConcept,
+  getConceptExplanations,
   saveExplanationToDB
 }; // https://firebase.google.com/docs/firestore/query-data/get-data
 
