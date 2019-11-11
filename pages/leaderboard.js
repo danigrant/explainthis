@@ -4,27 +4,6 @@ import AppContainer from '../components/AppContainer';
 import { getPointsLeaderboard, getNumExplanationsLeaderboard } from '../components/Firebase'
 import Loading from '../components/Loading'
 
-// [
-//   {
-//     username: '@BoFirstDog',
-//     points: 32,
-//     numContributedExplanations: 9,
-//     id: 'iq4HKkEUAHX7510iGXh5'
-//   },
-//   {
-//     username: '@barackobama',
-//     points: 9,
-//     numContributedExplanations: 4,
-//     id: '0oKwLoIQhAIzskcLpdAP'
-//   },
-//   {
-//     username: '@thedanigrant',
-//     points: 5,
-//     numContributedExplanations: 3,
-//     id: 'gxr7bAHgVA8QdhskxJVA'
-//   }
-// ]
-
 
 class Leaderboard extends React.Component {
   constructor(props) {

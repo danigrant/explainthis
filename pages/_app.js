@@ -2,6 +2,7 @@ import React from 'react'
 import App from 'next/app'
 import Head from 'next/head';
 import '../components/Firebase'
+import '../components/Twitter'
 
 class MyApp extends App {
   render() {
