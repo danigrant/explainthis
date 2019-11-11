@@ -335,7 +335,15 @@ async function getNumExplanationsLeaderboard() {
   return data;
 }
 
-const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
+const provider = new firebase.auth.TwitterAuthProvider();
+
+async function loginWithTwitter() {
+  firebase.auth().signInWithPopup(provider).then(function (result) {
+    let token = result.credential.accessToken;
+    let secret = result.credential.secret;
+    let user = result.user;
+  });
+}
 
 void async function main() {}();
 module.exports = {
@@ -346,7 +354,8 @@ module.exports = {
   getUsersExplanations,
   getUserPoints,
   getPointsLeaderboard,
-  getNumExplanationsLeaderboard
+  getNumExplanationsLeaderboard,
+  loginWithTwitter
 };
 
 /***/ }),

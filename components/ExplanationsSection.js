@@ -9,12 +9,12 @@ class ExplanationsSection extends React.Component {
     this.state = {
       loggedInUser: '@barackobama'
     }
+    this.handleVote = this.handleVote.bind(this)
   }
-  componentWillMount() {
-    console.log(this.props)
-  }
-  handleVote = (vote, explanationID) => {
-    addVote(vote, this.state.loggedInUser, explanationID)
+  async handleVote(vote, explanationID) {
+    await addVote(vote, this.state.loggedInUser, explanationID)
+    // await this.props.parentHandleVote()
+    await this.props.handleUdatingDisplayedScores()
   }
   render() {
     return (
@@ -22,7 +22,7 @@ class ExplanationsSection extends React.Component {
        {
          this.props.explanations.map((e) => {
            return (
-             <div className="explanation" id={`explanation-${e.id}`}>
+             <div className="explanation" key={`explanation-${e.id}`}>
               {
                 this.props.profilepage &&
                 <Link href={`/explainthis/${e.concept}`}>

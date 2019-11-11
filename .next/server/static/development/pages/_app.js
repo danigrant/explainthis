@@ -301,7 +301,15 @@ async function getNumExplanationsLeaderboard() {
   return data;
 }
 
-const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
+const provider = new firebase.auth.TwitterAuthProvider();
+
+async function loginWithTwitter() {
+  firebase.auth().signInWithPopup(provider).then(function (result) {
+    let token = result.credential.accessToken;
+    let secret = result.credential.secret;
+    let user = result.user;
+  });
+}
 
 void async function main() {}();
 module.exports = {
@@ -312,7 +320,8 @@ module.exports = {
   getUsersExplanations,
   getUserPoints,
   getPointsLeaderboard,
-  getNumExplanationsLeaderboard
+  getNumExplanationsLeaderboard,
+  loginWithTwitter
 };
 
 /***/ }),
@@ -1034,7 +1043,23 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
+  constructor(props) {
+    super(props);
+    this.state = {
+      authenticated: false
+    };
+    this.updateAuth = this.updateAuth.bind(this);
+  }
+
+  async updateAuth() {
+    await Object(_components_Firebase__WEBPACK_IMPORTED_MODULE_12__["loginWithTwitter"])();
+    this.state = {
+      authenticated: !this.state.authenticated
+    };
+  }
+
   render() {
     const {
       Component,
@@ -1044,13 +1069,13 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       className: "jsx-1635431161" + " " + "wrapper",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 25
       },
       __self: this
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_11___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12
+        lineNumber: 26
       },
       __self: this
     }, __jsx("link", {
@@ -1059,7 +1084,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       className: "jsx-1635431161",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 27
       },
       __self: this
     }), __jsx("link", {
@@ -1068,7 +1093,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       className: "jsx-1635431161",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 28
       },
       __self: this
     }), __jsx("link", {
@@ -1077,20 +1102,23 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       className: "jsx-1635431161",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 29
       },
       __self: this
-    })), __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_7__["default"])({}, pageProps, {
+    })), __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      updateAuth: this.updateAuth,
+      authenticated: this.state.authenticated
+    }, pageProps, {
       className: "jsx-1635431161" + " " + (pageProps && pageProps.className != null && pageProps.className || ""),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 17
+        lineNumber: 31
       },
       __self: this
     })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_8___default.a, {
       id: "1635431161",
       __self: this
-    }, ".wrapper.jsx-1635431161{font-family:-apple-system,'IBM Plex Sans',sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvcGFnZXMvX2FwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFpQmtCLEFBR29FLHFEQUN6RCIsImZpbGUiOiIvVXNlcnMvZGFuaWdyYW50L1Byb2plY3RzL2V4cGxhaW50aGlzL3BhZ2VzL19hcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXG5pbXBvcnQgQXBwIGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcbmltcG9ydCAnLi4vY29tcG9uZW50cy9GaXJlYmFzZSdcbmltcG9ydCAnLi4vY29tcG9uZW50cy9Ud2l0dGVyJ1xuXG5jbGFzcyBNeUFwcCBleHRlbmRzIEFwcCB7XG4gIHJlbmRlcigpIHtcbiAgICBjb25zdCB7IENvbXBvbmVudCwgcGFnZVByb3BzIH0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwid3JhcHBlclwiPlxuICAgICAgPEhlYWQ+XG4gICAgICAgIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9SUJNK1BsZXgrU2Fuczo0MDAsNjAwLDcwMCZkaXNwbGF5PXN3YXBcIiByZWw9XCJzdHlsZXNoZWV0XCIgLz5cbiAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2ljb24/ZmFtaWx5PU1hdGVyaWFsK0ljb25zXCIgLz5cbiAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCIvL2Nkbi5xdWlsbGpzLmNvbS8xLjIuNi9xdWlsbC5zbm93LmNzc1wiIC8+XG4gICAgICA8L0hlYWQ+XG4gICAgICA8Q29tcG9uZW50IHsuLi5wYWdlUHJvcHN9IC8+XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAgICAgLndyYXBwZXIge1xuICAgICAgICAgICAgZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sICdJQk0gUGxleCBTYW5zJywgc2Fucy1zZXJpZjtcbiAgICAgICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgICA8L2Rpdj5cbiAgICApXG4gIH1cbn1cblxuTXlBcHAuZ2V0SW5pdGlhbFByb3BzID0gYXN5bmMgKGFwcENvbnRleHQpID0+IHtcbiAgLy8gY2FsbHMgcGFnZSdzIGBnZXRJbml0aWFsUHJvcHNgIGFuZCBmaWxscyBgYXBwUHJvcHMucGFnZVByb3BzYFxuICBjb25zdCBhcHBQcm9wcyA9IGF3YWl0IEFwcC5nZXRJbml0aWFsUHJvcHMoYXBwQ29udGV4dCk7XG5cbiAgcmV0dXJuIHsgLi4uYXBwUHJvcHMgfVxufVxuXG5leHBvcnQgZGVmYXVsdCBNeUFwcFxuIl19 */\n/*@ sourceURL=/Users/danigrant/Projects/explainthis/pages/_app.js */"));
+    }, ".wrapper.jsx-1635431161{font-family:-apple-system,'IBM Plex Sans',sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvcGFnZXMvX2FwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUErQmtCLEFBR29FLHFEQUN6RCIsImZpbGUiOiIvVXNlcnMvZGFuaWdyYW50L1Byb2plY3RzL2V4cGxhaW50aGlzL3BhZ2VzL19hcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXG5pbXBvcnQgQXBwIGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcbmltcG9ydCAnLi4vY29tcG9uZW50cy9GaXJlYmFzZSdcbmltcG9ydCB7IGxvZ2luV2l0aFR3aXR0ZXIgfSBmcm9tICcuLi9jb21wb25lbnRzL0ZpcmViYXNlJ1xuaW1wb3J0ICcuLi9jb21wb25lbnRzL1R3aXR0ZXInXG5cbmNsYXNzIE15QXBwIGV4dGVuZHMgQXBwIHtcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcylcbiAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgYXV0aGVudGljYXRlZDogZmFsc2VcbiAgICB9XG4gICAgdGhpcy51cGRhdGVBdXRoID0gdGhpcy51cGRhdGVBdXRoLmJpbmQodGhpcylcbiAgfVxuICBhc3luYyB1cGRhdGVBdXRoKCkge1xuICAgIGF3YWl0IGxvZ2luV2l0aFR3aXR0ZXIoKVxuICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICBhdXRoZW50aWNhdGVkOiAhdGhpcy5zdGF0ZS5hdXRoZW50aWNhdGVkXG4gICAgfVxuICB9XG4gIHJlbmRlcigpIHtcbiAgICBjb25zdCB7IENvbXBvbmVudCwgcGFnZVByb3BzIH0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwid3JhcHBlclwiPlxuICAgICAgPEhlYWQ+XG4gICAgICAgIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9SUJNK1BsZXgrU2Fuczo0MDAsNjAwLDcwMCZkaXNwbGF5PXN3YXBcIiByZWw9XCJzdHlsZXNoZWV0XCIgLz5cbiAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2ljb24/ZmFtaWx5PU1hdGVyaWFsK0ljb25zXCIgLz5cbiAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCIvL2Nkbi5xdWlsbGpzLmNvbS8xLjIuNi9xdWlsbC5zbm93LmNzc1wiIC8+XG4gICAgICA8L0hlYWQ+XG4gICAgICA8Q29tcG9uZW50ICB1cGRhdGVBdXRoPXt0aGlzLnVwZGF0ZUF1dGh9IGF1dGhlbnRpY2F0ZWQ9e3RoaXMuc3RhdGUuYXV0aGVudGljYXRlZH0gey4uLnBhZ2VQcm9wc30gLz5cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgICAud3JhcHBlciB7XG4gICAgICAgICAgICBmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgJ0lCTSBQbGV4IFNhbnMnLCBzYW5zLXNlcmlmO1xuICAgICAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICAgIDwvZGl2PlxuICAgIClcbiAgfVxufVxuXG5NeUFwcC5nZXRJbml0aWFsUHJvcHMgPSBhc3luYyAoYXBwQ29udGV4dCkgPT4ge1xuICAvLyBjYWxscyBwYWdlJ3MgYGdldEluaXRpYWxQcm9wc2AgYW5kIGZpbGxzIGBhcHBQcm9wcy5wYWdlUHJvcHNgXG4gIGNvbnN0IGFwcFByb3BzID0gYXdhaXQgQXBwLmdldEluaXRpYWxQcm9wcyhhcHBDb250ZXh0KTtcblxuICByZXR1cm4geyAuLi5hcHBQcm9wcyB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IE15QXBwXG4iXX0= */\n/*@ sourceURL=/Users/danigrant/Projects/explainthis/pages/_app.js */"));
   }
 
 }

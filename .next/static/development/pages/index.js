@@ -542,7 +542,35 @@ function _getNumExplanationsLeaderboard() {
   return _getNumExplanationsLeaderboard.apply(this, arguments);
 }
 
-var provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
+var provider = new firebase.auth.TwitterAuthProvider();
+
+function loginWithTwitter() {
+  return _loginWithTwitter.apply(this, arguments);
+}
+
+function _loginWithTwitter() {
+  _loginWithTwitter = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee13() {
+    return _regenerator["default"].wrap(function _callee13$(_context13) {
+      while (1) {
+        switch (_context13.prev = _context13.next) {
+          case 0:
+            firebase.auth().signInWithPopup(provider).then(function (result) {
+              var token = result.credential.accessToken;
+              var secret = result.credential.secret;
+              var user = result.user;
+            });
+
+          case 1:
+          case "end":
+            return _context13.stop();
+        }
+      }
+    }, _callee13);
+  }));
+  return _loginWithTwitter.apply(this, arguments);
+}
 
 void function () {
   var _main = (0, _asyncToGenerator2["default"])(
@@ -573,7 +601,8 @@ module.exports = {
   getUsersExplanations: getUsersExplanations,
   getUserPoints: getUserPoints,
   getPointsLeaderboard: getPointsLeaderboard,
-  getNumExplanationsLeaderboard: getNumExplanationsLeaderboard
+  getNumExplanationsLeaderboard: getNumExplanationsLeaderboard,
+  loginWithTwitter: loginWithTwitter
 };
 
 /***/ }),

@@ -14,8 +14,16 @@ class Explainer extends React.Component {
       userPoints: {}
     }
     const { router } = this.props
+    this.handleVote = this.handleVote.bind(this)
   }
   async componentDidMount() {
+    const { router } = this.props
+    this.setState({
+      data: await getUsersExplanations(router.query.id),
+      userPoints: await getUserPoints(router.query.id)
+    })
+  }
+  async parentHandleVote() {
     const { router } = this.props
     this.setState({
       data: await getUsersExplanations(router.query.id),
@@ -56,7 +64,7 @@ class Explainer extends React.Component {
               </div>
               <div className="explanationsSection">
                 <p>{`All of ${router.query.id}'s explanations:`}</p>
-                <ExplanationsSection profilepage={true} explanations={this.state.data.explanations} />
+                <ExplanationsSection parentHandleVote={this.parentHandleVote} profilepage={true} explanations={this.state.data.explanations} />
               </div>
             </AppContainer>
             <style jsx>{`

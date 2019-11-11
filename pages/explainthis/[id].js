@@ -16,6 +16,8 @@ class ExplainThis extends React.Component {
       data: {}
     }
     const { router } = this.props
+    this.handleSubmitAnswer = this.handleSubmitAnswer.bind(this)
+    this.handleUdatingDisplayedScores = this.handleUdatingDisplayedScores.bind(this)
   }
   async componentWillMount() {
     const { router } = this.props
@@ -23,9 +25,23 @@ class ExplainThis extends React.Component {
       data: await getConceptExplanations(router.query.id)
     })
   }
-  handleAnswerClick = () => { // es6 so that you don't have to bind this for scope
+  handleAnswerClick = () => {
     this.setState({
       showEditor: !this.state.showEditor
+    })
+  }
+  async handleSubmitAnswer() {
+    const { router } = this.props
+    this.setState({
+      showEditor: !this.state.showEditor,
+      data: await getConceptExplanations(router.query.id)
+    })
+  }
+  async handleUdatingDisplayedScores() {
+    const { router } = this.props
+    await new Promise(cb => setTimeout(cb, 500)) // this is extremely silly: i am waiting 500ms for firebase to update otherwise there is a lag and the score looks like it's 1
+    this.setState({
+      data: await getConceptExplanations(router.query.id)
     })
   }
   render() {
@@ -43,11 +59,11 @@ class ExplainThis extends React.Component {
                   <h1>What are all the different ways to explain {this.state.data.concept}?</h1>
                   <ActionBar handleAnswerClick={this.handleAnswerClick} />
                   { this.state.showEditor &&
-                    <Editor />
+                    <Editor handleSubmitAnswer={this.handleSubmitAnswer}/>
                   }
                   <p>{this.state.data.explanations.length} Explanations</p>
                 </div>
-                <ExplanationsSection explanations={this.state.data.explanations} />
+                <ExplanationsSection handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} explanations={this.state.data.explanations} />
               </AppContainer>
               <style jsx>{`
                 .explanationHeader {

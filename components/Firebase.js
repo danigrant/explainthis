@@ -194,9 +194,15 @@ async function getNumExplanationsLeaderboard() {
 
 const provider = new firebase.auth.TwitterAuthProvider();
 
-// todo sign in with twitter
+async function loginWithTwitter() {
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    let token = result.credential.accessToken
+    let secret = result.credential.secret
+    let user = result.user
+  })
+}
 
 void async function main() {
 }()
 
-module.exports = { getConceptExplanations, saveExplanationToDB, addVote, getAllConcepts, getUsersExplanations, getUserPoints, getPointsLeaderboard, getNumExplanationsLeaderboard }
+module.exports = { getConceptExplanations, saveExplanationToDB, addVote, getAllConcepts, getUsersExplanations, getUserPoints, getPointsLeaderboard, getNumExplanationsLeaderboard, loginWithTwitter }

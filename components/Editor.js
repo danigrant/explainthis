@@ -28,6 +28,10 @@ class Editor extends React.Component {
 
   async handleSave() {
     await saveExplanationToDB("emergence", "@barackobama", this.state.text)
+    this.setState({
+      text: ''
+    })
+    this.props.handleSubmitAnswer()
   }
 
   async imageHandler(image) {
