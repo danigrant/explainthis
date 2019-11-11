@@ -113,8 +113,9 @@ function _saveExplanationToDB() {
               "voteLog": []
             };
             explanationsRef.add(newExplanation);
+            incrementUserExplanationCount(author);
 
-          case 2:
+          case 3:
           case "end":
             return _context3.stop();
         }
@@ -157,7 +158,9 @@ function _addVote() {
               });
             }
 
-          case 4:
+            updateUserScore(vote, user);
+
+          case 5:
           case "end":
             return _context4.stop();
         }
@@ -339,7 +342,8 @@ function _updateUserScore() {
 
 function incrementUserExplanationCount(_x12) {
   return _incrementUserExplanationCount.apply(this, arguments);
-}
+} // get user data aka score and num contributed explanations
+
 
 function _incrementUserExplanationCount() {
   _incrementUserExplanationCount = (0, _asyncToGenerator2["default"])(
@@ -371,6 +375,48 @@ function _incrementUserExplanationCount() {
   return _incrementUserExplanationCount.apply(this, arguments);
 }
 
+function getUserPoints(_x13) {
+  return _getUserPoints.apply(this, arguments);
+}
+
+function _getUserPoints() {
+  _getUserPoints = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee10(username) {
+    var data, snapshot;
+    return _regenerator["default"].wrap(function _callee10$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
+          case 0:
+            data = {};
+            _context10.next = 3;
+            return usersRef.where('username', '==', username).get();
+
+          case 3:
+            snapshot = _context10.sent;
+            _context10.next = 6;
+            return snapshot.forEach(function (doc) {
+              var docData = doc.data();
+              data = {
+                "points": docData.score,
+                "numContributedExplanations": docData.contributedExplanations
+              };
+            });
+
+          case 6:
+            console.log(data);
+            return _context10.abrupt("return", data);
+
+          case 8:
+          case "end":
+            return _context10.stop();
+        }
+      }
+    }, _callee10);
+  }));
+  return _getUserPoints.apply(this, arguments);
+}
+
 var provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
 void function () {
@@ -399,7 +445,8 @@ module.exports = {
   saveExplanationToDB: saveExplanationToDB,
   addVote: addVote,
   getAllConcepts: getAllConcepts,
-  getUsersExplanations: getUsersExplanations
+  getUsersExplanations: getUsersExplanations,
+  getUserPoints: getUserPoints
 };
 
 /***/ }),

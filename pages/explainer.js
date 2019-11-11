@@ -2,24 +2,26 @@ import React from 'react'
 import Header from '../components/Header'
 import AppContainer from '../components/AppContainer';
 import ExplanationsSection from '../components/ExplanationsSection'
-import { getUsersExplanations } from '../components/Firebase'
+import { getUsersExplanations, getUserPoints } from '../components/Firebase'
 import Loading from '../components/Loading'
 
 class Explainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      userPoints: {}
     }
   }
   async componentWillMount() {
     this.setState({
-      data: await getUsersExplanations('@barackobama')
+      data: await getUsersExplanations('@barackobama'),
+      userPoints: await getUserPoints('@barackobama')
     })
   }
   render() {
     {
-      if (!this.state.data.explanations) {
+      if (!this.state.data.explanations || !this.state.userPoints.points) {
         return <Loading />
       } else {
         return (
@@ -38,8 +40,12 @@ class Explainer extends React.Component {
                       <p>Leaderboard Place • #15</p>
                     </div>
                     <div className="header-stat-item">
+                      <i className="material-icons">emoji_people_rounded</i>
+                      <p>Contributed Explanations • {this.state.userPoints.numContributedExplanations}</p>
+                    </div>
+                    <div className="header-stat-item">
                       <i className="material-icons">emoji_flags_rounded</i>
-                      <p>Points • 150</p>
+                      <p>Points • {this.state.userPoints.points}</p>
                     </div>
                   </div>
                 </div>
@@ -70,7 +76,7 @@ class Explainer extends React.Component {
                 position: relative;
                 top: 5px;
               }
-              .header-stat-item:nth-of-type(2) {
+              .header-stat-item:not(:first-of-type) {
                 margin-left: 35px;
               }
               .header {
@@ -80,7 +86,7 @@ class Explainer extends React.Component {
                 margin-bottom: 5px;
                 margin-top: 0px;
               }
-              .column:nth-of-type(2) {
+              .column:not(:first-of-type) {
                 margin-left: 15px;
                 position: relative;
                 bottom: 5px;

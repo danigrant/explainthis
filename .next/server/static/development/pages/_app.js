@@ -159,6 +159,7 @@ async function saveExplanationToDB(concept, author, explanation) {
     "voteLog": []
   };
   explanationsRef.add(newExplanation);
+  incrementUserExplanationCount(author);
 } // up or down votes an explanation
 
 
@@ -182,6 +183,8 @@ async function addVote(vote, user, explanationID) {
       score: decrement
     });
   }
+
+  updateUserScore(vote, user);
 }
 
 async function getAllConcepts() {
@@ -248,6 +251,21 @@ async function incrementUserExplanationCount(username) {
   userRef.update({
     contributedExplanations: increment
   });
+} // get user data aka score and num contributed explanations
+
+
+async function getUserPoints(username) {
+  let data = {};
+  let snapshot = await usersRef.where('username', '==', username).get();
+  await snapshot.forEach(doc => {
+    let docData = doc.data();
+    data = {
+      "points": docData.score,
+      "numContributedExplanations": docData.contributedExplanations
+    };
+  });
+  console.log(data);
+  return data;
 }
 
 const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
@@ -258,7 +276,8 @@ module.exports = {
   saveExplanationToDB,
   addVote,
   getAllConcepts,
-  getUsersExplanations
+  getUsersExplanations,
+  getUserPoints
 };
 
 /***/ }),
