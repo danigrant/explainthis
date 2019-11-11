@@ -22,10 +22,17 @@ class ExplanationsSection extends React.Component {
          this.props.explanations.map((e) => {
            return (
              <div className="explanation" id={`explanation-${e.id}`}>
-               <div className="attribution">
-                 <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
-                 <p className="attributionUsername">{e.author}</p>
-               </div>
+              {
+                this.props.profilepage &&
+                <div className="conceptName">{e.concept}</div>
+              }
+              {
+                !this.props.profilepage &&
+                <div className="attribution">
+                  <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
+                  <p className="attributionUsername">{e.author}</p>
+                </div>
+              }
                <div className="explanationMeat">
                  {parse(e.explanation)}
                </div>
@@ -96,6 +103,10 @@ class ExplanationsSection extends React.Component {
           .score {
             margin-right: 10px;
             color: #bbb;
+          }
+          .conceptName {
+            font-weight: bold;
+            font-size: 24px;
           }
 
         `}</style>

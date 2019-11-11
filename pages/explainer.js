@@ -46,7 +46,7 @@ class Explainer extends React.Component {
               </div>
               <div className="explanationsSection">
                 <p>All of @barackobama's explanations:</p>
-                <ExplanationsSection explanations={this.state.data.explanations} />
+                <ExplanationsSection profilepage={true} explanations={this.state.data.explanations} />
               </div>
             </AppContainer>
             <style jsx>{`
