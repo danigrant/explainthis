@@ -199,6 +199,24 @@ async function getAllConcepts() {
   return data;
 }
 
+async function getUsersExplanations(username) {
+  let snapshot = await explanationsRef.where('author', '==', username).get();
+  let data = {
+    "explanations": []
+  };
+  await snapshot.forEach(doc => {
+    let docData = doc.data();
+    data.explanations.push({
+      "concept": docData.concept,
+      "datetime": docData.datetime,
+      "explanation": docData.explanation,
+      "score": docData.score,
+      "id": doc.id
+    });
+  });
+  return data;
+}
+
 const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
 void async function main() {}();
@@ -206,7 +224,8 @@ module.exports = {
   getConceptExplanations,
   saveExplanationToDB,
   addVote,
-  getAllConcepts
+  getAllConcepts,
+  getUsersExplanations
 };
 
 /***/ }),

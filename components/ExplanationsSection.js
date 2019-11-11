@@ -9,6 +9,9 @@ class ExplanationsSection extends React.Component {
       loggedInUser: '@barackobama'
     }
   }
+  componentWillMount() {
+    console.log(this.props)
+  }
   handleVote = (vote, explanationID) => {
     addVote(vote, this.state.loggedInUser, explanationID)
   }
