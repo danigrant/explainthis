@@ -260,7 +260,10 @@ if (!firebase.apps.length) {
 
 var db = firebase.firestore();
 var conceptsRef = db.collection('concepts');
-var explanationsRef = db.collection('explanations'); // returns obj with all explanations for one topic, ordered by voteCount
+var explanationsRef = db.collection('explanations');
+var usersRef = db.collection('users');
+var increment = firebase.firestore.FieldValue.increment(1);
+var decrement = firebase.firestore.FieldValue.increment(-1); // returns obj with all explanations for one topic, ordered by voteCount
 
 function getConceptExplanations(_x) {
   return _getConceptExplanations.apply(this, arguments);
@@ -352,12 +355,11 @@ function _addVote() {
   _addVote = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
   _regenerator["default"].mark(function _callee4(vote, user, explanationID) {
-    var explanationRef, newVote, increment, decrement;
+    var explanationRef, newVote;
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
-            console.log('vote: ', vote);
             explanationRef = explanationsRef.doc(explanationID);
             newVote = {
               "datetime": firebase.firestore.Timestamp.now(),
@@ -367,8 +369,6 @@ function _addVote() {
             explanationRef.update({
               voteLog: firebase.firestore.FieldValue.arrayUnion(newVote)
             });
-            increment = firebase.firestore.FieldValue.increment(1);
-            decrement = firebase.firestore.FieldValue.increment(-1);
 
             if (vote > 0) {
               explanationRef.update({
@@ -380,7 +380,7 @@ function _addVote() {
               });
             }
 
-          case 7:
+          case 4:
           case "end":
             return _context4.stop();
         }
@@ -435,7 +435,8 @@ function _getAllConcepts() {
 
 function getUsersExplanations(_x8) {
   return _getUsersExplanations.apply(this, arguments);
-}
+} // get specific user id
+
 
 function _getUsersExplanations() {
   _getUsersExplanations = (0, _asyncToGenerator2["default"])(
@@ -477,6 +478,120 @@ function _getUsersExplanations() {
     }, _callee6);
   }));
   return _getUsersExplanations.apply(this, arguments);
+}
+
+function getUserDocID(_x9) {
+  return _getUserDocID.apply(this, arguments);
+} // increment/decrement users score by -1 or 1
+
+
+function _getUserDocID() {
+  _getUserDocID = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee7(username) {
+    var id, snapshot;
+    return _regenerator["default"].wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            id = "";
+            _context7.next = 3;
+            return usersRef.where('username', '==', username).get();
+
+          case 3:
+            snapshot = _context7.sent;
+            _context7.next = 6;
+            return snapshot.forEach(function (doc) {
+              id = doc.id;
+            });
+
+          case 6:
+            return _context7.abrupt("return", id);
+
+          case 7:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+  return _getUserDocID.apply(this, arguments);
+}
+
+function updateUserScore(_x10, _x11) {
+  return _updateUserScore.apply(this, arguments);
+} // increment users explanations
+
+
+function _updateUserScore() {
+  _updateUserScore = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee8(value, username) {
+    var userRef;
+    return _regenerator["default"].wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            _context8.t0 = usersRef;
+            _context8.next = 3;
+            return getUserDocID(username);
+
+          case 3:
+            _context8.t1 = _context8.sent;
+            userRef = _context8.t0.doc.call(_context8.t0, _context8.t1);
+
+            if (value > 0) {
+              userRef.update({
+                score: increment
+              });
+            } else {
+              userRef.update({
+                score: decrement
+              });
+            }
+
+          case 6:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8);
+  }));
+  return _updateUserScore.apply(this, arguments);
+}
+
+function incrementUserExplanationCount(_x12) {
+  return _incrementUserExplanationCount.apply(this, arguments);
+}
+
+function _incrementUserExplanationCount() {
+  _incrementUserExplanationCount = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee9(username) {
+    var userRef;
+    return _regenerator["default"].wrap(function _callee9$(_context9) {
+      while (1) {
+        switch (_context9.prev = _context9.next) {
+          case 0:
+            _context9.t0 = usersRef;
+            _context9.next = 3;
+            return getUserDocID(username);
+
+          case 3:
+            _context9.t1 = _context9.sent;
+            userRef = _context9.t0.doc.call(_context9.t0, _context9.t1);
+            userRef.update({
+              contributedExplanations: increment
+            });
+
+          case 6:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    }, _callee9);
+  }));
+  return _incrementUserExplanationCount.apply(this, arguments);
 }
 
 var provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter

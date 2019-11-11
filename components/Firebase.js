@@ -18,6 +18,10 @@ if (!firebase.apps.length) {
 const db = firebase.firestore();
 const conceptsRef = db.collection('concepts');
 const explanationsRef = db.collection('explanations')
+const usersRef = db.collection('users')
+
+const increment = firebase.firestore.FieldValue.increment(1);
+const decrement = firebase.firestore.FieldValue.increment(-1);
 
 // returns obj with all explanations for one topic, ordered by voteCount
 async function getConceptExplanations(concept) {
@@ -55,7 +59,6 @@ async function saveExplanationToDB(concept, author, explanation) {
 
 // up or down votes an explanation
 async function addVote(vote, user, explanationID) {
-  console.log('vote: ', vote);
   let explanationRef = explanationsRef.doc(explanationID)
 
   let newVote = {
@@ -67,9 +70,6 @@ async function addVote(vote, user, explanationID) {
   explanationRef.update({
     voteLog: firebase.firestore.FieldValue.arrayUnion(newVote)
   })
-
-  const increment = firebase.firestore.FieldValue.increment(1);
-  const decrement = firebase.firestore.FieldValue.increment(-1);
 
   if (vote > 0) {
     explanationRef.update({ score: increment })
@@ -112,6 +112,35 @@ async function getUsersExplanations(username) {
   })
   return data
 }
+
+// get specific user id
+async function getUserDocID(username) {
+  let id = ""
+  let snapshot = await usersRef.where('username', '==', username).get()
+  await snapshot.forEach(doc => {
+    id = doc.id
+  })
+  return id
+}
+
+// increment/decrement users score by -1 or 1
+async function updateUserScore(value, username) {
+  let userRef = usersRef.doc(await getUserDocID(username))
+
+  if (value > 0) {
+    userRef.update({ score: increment })
+  } else {
+    userRef.update({ score: decrement })
+  }
+}
+
+// increment users explanations
+async function incrementUserExplanationCount(username) {
+  let userRef = usersRef.doc(await getUserDocID(username))
+
+  userRef.update({ contributedExplanations: increment })
+}
+
 
 const provider = new firebase.auth.TwitterAuthProvider();
 
