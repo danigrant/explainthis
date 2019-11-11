@@ -608,28 +608,23 @@ async function addVote(vote, user, explanationID) {
 }
 
 async function getAllConcepts() {
+  let snapshot = await conceptsRef.get();
   let data = [];
-  conceptsRef.get().then(snapshot => {
-    console.log(snapshot);
-    snapshot.forEach(doc => {
-      let docData = doc.data();
-      let concept = {
+  await snapshot.forEach(doc => {
+    let docData = doc.data();
+    data.push({
+      "concept": {
         "id": doc.id,
         "concept": docData.concept
-      };
-      console.log("concept: ", concept);
-      data.push(concept);
+      }
     });
   });
-  console.log(`data in getAllConcepts: ${data}`);
   return data;
 }
 
 const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
-void async function main() {
-  getAllConcepts();
-}();
+void async function main() {}();
 module.exports = {
   getConceptExplanations,
   saveExplanationToDB,

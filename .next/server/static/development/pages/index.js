@@ -219,28 +219,23 @@ async function addVote(vote, user, explanationID) {
 }
 
 async function getAllConcepts() {
+  let snapshot = await conceptsRef.get();
   let data = [];
-  conceptsRef.get().then(snapshot => {
-    console.log(snapshot);
-    snapshot.forEach(doc => {
-      let docData = doc.data();
-      let concept = {
+  await snapshot.forEach(doc => {
+    let docData = doc.data();
+    data.push({
+      "concept": {
         "id": doc.id,
         "concept": docData.concept
-      };
-      console.log("concept: ", concept);
-      data.push(concept);
+      }
     });
   });
-  console.log(`data in getAllConcepts: ${data}`);
   return data;
 }
 
 const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
-void async function main() {
-  getAllConcepts();
-}();
+void async function main() {}();
 module.exports = {
   getConceptExplanations,
   saveExplanationToDB,
@@ -2023,23 +2018,38 @@ const Index = props => __jsx(_components_AppContainer__WEBPACK_IMPORTED_MODULE_3
     lineNumber: 8
   },
   __self: undefined
-}, console.log(props)));
+}, props.concepts.map(concept => __jsx("li", {
+  key: concept.id,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10
+  },
+  __self: undefined
+}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  href: "/explainthis/[id]",
+  as: `/explainthis/${concept.id}`,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11
+  },
+  __self: undefined
+}, __jsx("a", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 12
+  },
+  __self: undefined
+}, concept.concept))))));
 
 Index.getInitialProps = async function () {
-  const res = await Object(_components_Firebase__WEBPACK_IMPORTED_MODULE_1__["getAllConcepts"])();
-  console.log(`Show data fetched: ${res}`);
+  const data = await Object(_components_Firebase__WEBPACK_IMPORTED_MODULE_1__["getAllConcepts"])(); // [{"id":"2Vwu1DWYmxG3DQ1GdT8u","concept":"emergence"},{"id":"vUauhHDGkBYj54DjAgLw","concept":"convexity"}]
+
   return {
-    concepts: res
+    concepts: data.map(entry => entry.concept)
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Index); // {props.concepts.map(concept => (
-//   <li key={concept.id}>
-//     <Link href="/explainthis/[id]" as={`/explainthis/${concept.id}`}>
-//       <a>{concept.concept}</a>
-//     </Link>
-//   </li>
-// ))}
+/* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),
 

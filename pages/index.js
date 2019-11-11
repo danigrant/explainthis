@@ -6,27 +6,24 @@ const Index = props => (
   <AppContainer>
     <h1>A list of all the concepts</h1>
     <ul>
-      { console.log(props) }
+      {props.concepts.map(concept => (
+        <li key={concept.id}>
+          <Link href="/explainthis/[id]" as={`/explainthis/${concept.id}`}>
+            <a>{concept.concept}</a>
+          </Link>
+        </li>
+      ))}
     </ul>
   </AppContainer>
 );
 
 Index.getInitialProps = async function() {
-  const res = await getAllConcepts();
 
-  console.log(`Show data fetched: ${res}`);
+  const data = await getAllConcepts(); // [{"id":"2Vwu1DWYmxG3DQ1GdT8u","concept":"emergence"},{"id":"vUauhHDGkBYj54DjAgLw","concept":"convexity"}]
 
   return {
-    concepts: res
+    concepts: data.map(entry => entry.concept)
   };
 };
 
 export default Index;
-
-// {props.concepts.map(concept => (
-//   <li key={concept.id}>
-//     <Link href="/explainthis/[id]" as={`/explainthis/${concept.id}`}>
-//       <a>{concept.concept}</a>
-//     </Link>
-//   </li>
-// ))}

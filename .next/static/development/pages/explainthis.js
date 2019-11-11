@@ -713,28 +713,32 @@ function _getAllConcepts() {
   _getAllConcepts = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
   _regenerator["default"].mark(function _callee5() {
-    var data;
+    var snapshot, data;
     return _regenerator["default"].wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
+            _context5.next = 2;
+            return conceptsRef.get();
+
+          case 2:
+            snapshot = _context5.sent;
             data = [];
-            conceptsRef.get().then(function (snapshot) {
-              console.log(snapshot);
-              snapshot.forEach(function (doc) {
-                var docData = doc.data();
-                var concept = {
+            _context5.next = 6;
+            return snapshot.forEach(function (doc) {
+              var docData = doc.data();
+              data.push({
+                "concept": {
                   "id": doc.id,
                   "concept": docData.concept
-                };
-                console.log("concept: ", concept);
-                data.push(concept);
+                }
               });
             });
-            console.log("data in getAllConcepts: ".concat(data));
+
+          case 6:
             return _context5.abrupt("return", data);
 
-          case 4:
+          case 7:
           case "end":
             return _context5.stop();
         }
@@ -754,9 +758,6 @@ void function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            getAllConcepts();
-
-          case 1:
           case "end":
             return _context.stop();
         }

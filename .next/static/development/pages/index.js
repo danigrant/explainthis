@@ -211,28 +211,32 @@ function _getAllConcepts() {
   _getAllConcepts = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
   _regenerator["default"].mark(function _callee5() {
-    var data;
+    var snapshot, data;
     return _regenerator["default"].wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
+            _context5.next = 2;
+            return conceptsRef.get();
+
+          case 2:
+            snapshot = _context5.sent;
             data = [];
-            conceptsRef.get().then(function (snapshot) {
-              console.log(snapshot);
-              snapshot.forEach(function (doc) {
-                var docData = doc.data();
-                var concept = {
+            _context5.next = 6;
+            return snapshot.forEach(function (doc) {
+              var docData = doc.data();
+              data.push({
+                "concept": {
                   "id": doc.id,
                   "concept": docData.concept
-                };
-                console.log("concept: ", concept);
-                data.push(concept);
+                }
               });
             });
-            console.log("data in getAllConcepts: ".concat(data));
+
+          case 6:
             return _context5.abrupt("return", data);
 
-          case 4:
+          case 7:
           case "end":
             return _context5.stop();
         }
@@ -252,9 +256,6 @@ void function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            getAllConcepts();
-
-          case 1:
           case "end":
             return _context.stop();
         }
@@ -64188,7 +64189,30 @@ var Index = function Index(props) {
       lineNumber: 8
     },
     __self: this
-  }, console.log(props)));
+  }, props.concepts.map(function (concept) {
+    return __jsx("li", {
+      key: concept.id,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      href: "/explainthis/[id]",
+      as: "/explainthis/".concat(concept.id),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      },
+      __self: this
+    }, __jsx("a", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12
+      },
+      __self: this
+    }, concept.concept)));
+  })));
 };
 
 Index.getInitialProps =
@@ -64196,7 +64220,7 @@ Index.getInitialProps =
 Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
 /*#__PURE__*/
 _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-  var res;
+  var data;
   return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -64205,26 +64229,21 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(f
           return Object(_components_Firebase__WEBPACK_IMPORTED_MODULE_3__["getAllConcepts"])();
 
         case 2:
-          res = _context.sent;
-          console.log("Show data fetched: ".concat(res));
+          data = _context.sent;
           return _context.abrupt("return", {
-            concepts: res
+            concepts: data.map(function (entry) {
+              return entry.concept;
+            })
           });
 
-        case 5:
+        case 4:
         case "end":
           return _context.stop();
       }
     }
   }, _callee);
 }));
-/* harmony default export */ __webpack_exports__["default"] = (Index); // {props.concepts.map(concept => (
-//   <li key={concept.id}>
-//     <Link href="/explainthis/[id]" as={`/explainthis/${concept.id}`}>
-//       <a>{concept.concept}</a>
-//     </Link>
-//   </li>
-// ))}
+/* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),
 
