@@ -6,7 +6,7 @@ import ExplanationsSection from '../../components/ExplanationsSection'
 import Editor from '../../components/Editor'
 import { getConceptExplanations } from '../../components/Firebase'
 import Loading from '../../components/Loading'
-
+import { withRouter } from 'next/router'
 
 class ExplainThis extends React.Component {
   constructor(props) {
@@ -15,10 +15,12 @@ class ExplainThis extends React.Component {
       showEditor: false,
       data: {}
     }
+    const { router } = this.props
   }
   async componentWillMount() {
+    const { router } = this.props
     this.setState({
-      data: await getConceptExplanations('emergence')
+      data: await getConceptExplanations(router.query.id)
     })
   }
   handleAnswerClick = () => { // es6 so that you don't have to bind this for scope
@@ -28,6 +30,7 @@ class ExplainThis extends React.Component {
   }
   render() {
       {
+        const { router } = this.props
         if (!this.state.data.concept) {
           return <Loading />
         }
@@ -58,4 +61,4 @@ class ExplainThis extends React.Component {
   }
 }
 
-export default ExplainThis
+export default withRouter(ExplainThis)
