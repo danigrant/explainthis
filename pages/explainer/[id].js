@@ -4,6 +4,7 @@ import AppContainer from '../../components/AppContainer';
 import ExplanationsSection from '../../components/ExplanationsSection'
 import { getUsersExplanations, getUserPoints } from '../../components/Firebase'
 import Loading from '../../components/Loading'
+import { withRouter } from 'next/router'
 
 class Explainer extends React.Component {
   constructor(props) {
@@ -12,15 +13,18 @@ class Explainer extends React.Component {
       data: [],
       userPoints: {}
     }
+    const { router } = this.props
   }
-  async componentWillMount() {
+  async componentDidMount() {
+    const { router } = this.props
     this.setState({
-      data: await getUsersExplanations('@barackobama'),
-      userPoints: await getUserPoints('@barackobama')
+      data: await getUsersExplanations(router.query.id),
+      userPoints: await getUserPoints(router.query.id)
     })
   }
   render() {
     {
+      const { router } = this.props
       if (!this.state.data.explanations || !this.state.userPoints.points) {
         return <Loading />
       } else {
@@ -33,7 +37,7 @@ class Explainer extends React.Component {
                   <img className="avatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
                 </div>
                 <div className="column">
-                  <h1 className="username">@barackobama</h1>
+                  <h1 className="username">{router.query.id}</h1>
                   <div className="header-stats">
                     <div className="header-stat-item">
                       <i className="material-icons">emoji_events_rounded</i>
@@ -51,7 +55,7 @@ class Explainer extends React.Component {
                 </div>
               </div>
               <div className="explanationsSection">
-                <p>All of @barackobama's explanations:</p>
+                <p>{`All of ${router.query.id}'s explanations:`}</p>
                 <ExplanationsSection profilepage={true} explanations={this.state.data.explanations} />
               </div>
             </AppContainer>
@@ -104,4 +108,4 @@ class Explainer extends React.Component {
   }
 }
 
-export default Explainer
+export default withRouter(Explainer)
