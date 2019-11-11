@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from '../components/Header'
-import AppContainer from '../components/AppContainer';
-import ExplanationsSection from '../components/ExplanationsSection'
-import { getUsersExplanations, getUserPoints } from '../components/Firebase'
-import Loading from '../components/Loading'
+import Header from '../../components/Header'
+import AppContainer from '../../components/AppContainer';
+import ExplanationsSection from '../../components/ExplanationsSection'
+import { getUsersExplanations, getUserPoints } from '../../components/Firebase'
+import Loading from '../../components/Loading'
 
 class Explainer extends React.Component {
   constructor(props) {

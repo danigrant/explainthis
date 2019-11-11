@@ -8,7 +8,7 @@ const Index = props => (
     <ul>
       {props.concepts.map(concept => (
         <li key={concept.id}>
-          <Link href="/explainthis/[id]" as={`/explainthis/${concept.id}`}>
+          <Link href="/explainthis/[id]" as={`/explainthis/${concept.concept}`}>
             <a>{concept.concept}</a>
           </Link>
         </li>

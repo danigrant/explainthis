@@ -1,11 +1,11 @@
 import React from 'react'
-import Header from '../components/Header'
-import AppContainer from '../components/AppContainer';
-import ActionBar from '../components/ActionBar'
-import ExplanationsSection from '../components/ExplanationsSection'
-import Editor from '../components/Editor'
-import { getConceptExplanations } from '../components/Firebase'
-import Loading from '../components/Loading'
+import Header from '../../components/Header'
+import AppContainer from '../../components/AppContainer';
+import ActionBar from '../../components/ActionBar'
+import ExplanationsSection from '../../components/ExplanationsSection'
+import Editor from '../../components/Editor'
+import { getConceptExplanations } from '../../components/Firebase'
+import Loading from '../../components/Loading'
 
 
 class ExplainThis extends React.Component {
