@@ -16,6 +16,10 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/explainer": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/explainthis": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
