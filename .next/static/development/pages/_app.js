@@ -57,7 +57,7 @@ function _getConceptExplanations() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return explanationsRef.where('concept', '==', concept).get();
+            return explanationsRef.where('concept', '==', concept).orderBy('score', 'desc').get();
 
           case 2:
             snapshot = _context2.sent;
@@ -228,7 +228,7 @@ function _getUsersExplanations() {
         switch (_context6.prev = _context6.next) {
           case 0:
             _context6.next = 2;
-            return explanationsRef.where('author', '==', username).get();
+            return explanationsRef.where('author', '==', username).orderBy('score', 'desc').get();
 
           case 2:
             snapshot = _context6.sent;
@@ -377,7 +377,8 @@ function _incrementUserExplanationCount() {
 
 function getUserPoints(_x13) {
   return _getUserPoints.apply(this, arguments);
-}
+} // get top 10 users by points
+
 
 function _getUserPoints() {
   _getUserPoints = (0, _asyncToGenerator2["default"])(
@@ -417,6 +418,99 @@ function _getUserPoints() {
   return _getUserPoints.apply(this, arguments);
 }
 
+function getPointsLeaderboard() {
+  return _getPointsLeaderboard.apply(this, arguments);
+} // get top 10 users by contributed explanations
+
+
+function _getPointsLeaderboard() {
+  _getPointsLeaderboard = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee11() {
+    var data, snapshot;
+    return _regenerator["default"].wrap(function _callee11$(_context11) {
+      while (1) {
+        switch (_context11.prev = _context11.next) {
+          case 0:
+            data = {
+              "leaderboard": []
+            };
+            _context11.next = 3;
+            return usersRef.orderBy('points', 'desc').orderBy('contributedExplanations', 'desc').limit(10).get();
+
+          case 3:
+            snapshot = _context11.sent;
+            _context11.next = 6;
+            return snapshot.forEach(function (doc) {
+              var docData = doc.data();
+              data.leaderboard.push({
+                "username": docData.username,
+                "points": docData.points,
+                "numContributedExplanations": docData.contributedExplanations,
+                "id": doc.id
+              });
+            });
+
+          case 6:
+            console.log(data);
+            return _context11.abrupt("return", data);
+
+          case 8:
+          case "end":
+            return _context11.stop();
+        }
+      }
+    }, _callee11);
+  }));
+  return _getPointsLeaderboard.apply(this, arguments);
+}
+
+function getNumExplanationsLeaderboard() {
+  return _getNumExplanationsLeaderboard.apply(this, arguments);
+}
+
+function _getNumExplanationsLeaderboard() {
+  _getNumExplanationsLeaderboard = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee12() {
+    var data, snapshot;
+    return _regenerator["default"].wrap(function _callee12$(_context12) {
+      while (1) {
+        switch (_context12.prev = _context12.next) {
+          case 0:
+            data = {
+              "leaderboard": []
+            };
+            _context12.next = 3;
+            return usersRef.orderBy('contributedExplanations', 'desc').orderBy('points', 'desc').limit(10).get();
+
+          case 3:
+            snapshot = _context12.sent;
+            _context12.next = 6;
+            return snapshot.forEach(function (doc) {
+              var docData = doc.data();
+              data.leaderboard.push({
+                "username": docData.username,
+                "points": docData.points,
+                "numContributedExplanations": docData.contributedExplanations,
+                "id": doc.id
+              });
+            });
+
+          case 6:
+            console.log(data);
+            return _context12.abrupt("return", data);
+
+          case 8:
+          case "end":
+            return _context12.stop();
+        }
+      }
+    }, _callee12);
+  }));
+  return _getNumExplanationsLeaderboard.apply(this, arguments);
+}
+
 var provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
 void function () {
@@ -427,6 +521,14 @@ void function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            _context.next = 2;
+            return getPointsLeaderboard();
+
+          case 2:
+            _context.next = 4;
+            return getNumExplanationsLeaderboard();
+
+          case 4:
           case "end":
             return _context.stop();
         }

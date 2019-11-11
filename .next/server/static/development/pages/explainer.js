@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -319,7 +319,7 @@ const increment = firebase.firestore.FieldValue.increment(1);
 const decrement = firebase.firestore.FieldValue.increment(-1); // returns obj with all explanations for one topic, ordered by voteCount
 
 async function getConceptExplanations(concept) {
-  let snapshot = await explanationsRef.where('concept', '==', concept).get();
+  let snapshot = await explanationsRef.where('concept', '==', concept).orderBy('score', 'desc').get();
   let data = {
     "concept": concept,
     "explanations": []
@@ -392,7 +392,7 @@ async function getAllConcepts() {
 }
 
 async function getUsersExplanations(username) {
-  let snapshot = await explanationsRef.where('author', '==', username).get();
+  let snapshot = await explanationsRef.where('author', '==', username).orderBy('score', 'desc').get();
   let data = {
     "explanations": []
   };
@@ -455,11 +455,52 @@ async function getUserPoints(username) {
   });
   console.log(data);
   return data;
+} // get top 10 users by points
+
+
+async function getPointsLeaderboard() {
+  let data = {
+    "leaderboard": []
+  };
+  let snapshot = await usersRef.orderBy('points', 'desc').orderBy('contributedExplanations', 'desc').limit(10).get();
+  await snapshot.forEach(doc => {
+    let docData = doc.data();
+    data.leaderboard.push({
+      "username": docData.username,
+      "points": docData.points,
+      "numContributedExplanations": docData.contributedExplanations,
+      "id": doc.id
+    });
+  });
+  console.log(data);
+  return data;
+} // get top 10 users by contributed explanations
+
+
+async function getNumExplanationsLeaderboard() {
+  let data = {
+    "leaderboard": []
+  };
+  let snapshot = await usersRef.orderBy('contributedExplanations', 'desc').orderBy('points', 'desc').limit(10).get();
+  await snapshot.forEach(doc => {
+    let docData = doc.data();
+    data.leaderboard.push({
+      "username": docData.username,
+      "points": docData.points,
+      "numContributedExplanations": docData.contributedExplanations,
+      "id": doc.id
+    });
+  });
+  console.log(data);
+  return data;
 }
 
 const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
-void async function main() {}();
+void async function main() {
+  await getPointsLeaderboard();
+  await getNumExplanationsLeaderboard();
+}();
 module.exports = {
   getConceptExplanations,
   saveExplanationToDB,
@@ -2613,7 +2654,7 @@ class Explainer extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
 
 /***/ }),
 
-/***/ 4:
+/***/ 6:
 /*!**********************************!*\
   !*** multi ./pages/explainer.js ***!
   \**********************************/
