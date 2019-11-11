@@ -4,19 +4,23 @@ function Header() {
   return (
     <div className="wrapper">
       <div className="sizeContainer">
-        <div className="logo">
-          <img src="/images/logo.png" />
-        </div>
+        <Link href="/">
+          <div className="logo link">
+            <img src="/images/logo.png" />
+          </div>
+        </Link>
         <div className="menu">
-          <div className="menu-item">
-            <i className="material-icons">emoji_events_rounded</i>
-            <Link href="/leaderboard">
-              <a title="Leaderboard">Leaderboard</a>
-            </Link>
-          </div>
-          <div className="avatar">
-            <img src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
-          </div>
+          <Link href="/leaderboard">
+            <div className="link menu-item">
+              <i className="material-icons">emoji_events_rounded</i>
+                <a title="Leaderboard">Leaderboard</a>
+            </div>
+          </Link>
+          <Link href="/explainer/@barackobama">
+            <div className="avatar link">
+              <img src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
+            </div>
+          </Link>
         </div>
       </div>
       <style jsx>{`
@@ -59,7 +63,7 @@ function Header() {
         }
         .menu-item {
           display: inline-block;
-          margin-left: 35px;
+          margin-left: 50px;
           color: #5a5a5a;
         }
         .avatar {
@@ -72,6 +76,15 @@ function Header() {
           border-radius: 50px;
           position: relative;
           top: 10px;
+        }
+        .link {
+          cursor:pointer;
+        }
+        .link:hover {
+          filter: brightness(115%);
+        }
+        .link:active {
+          filter: brightness(125%);
         }
       `}</style>
     </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import parse from 'html-react-parser';
 import { addVote } from './Firebase'
+import Link from 'next/link'
 
 class ExplanationsSection extends React.Component {
   constructor(props) {
@@ -24,14 +25,18 @@ class ExplanationsSection extends React.Component {
              <div className="explanation" id={`explanation-${e.id}`}>
               {
                 this.props.profilepage &&
-                <div className="conceptName">{`${e.author} explains ${e.concept}`}</div>
+                <Link href={`/explainthis/${e.concept}`}>
+                  <div className="link conceptName">{`${e.author} explains ${e.concept}`}</div>
+                </Link>
               }
               {
                 !this.props.profilepage &&
-                <div className="attribution">
-                  <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
-                  <p className="attributionUsername">{e.author}</p>
-                </div>
+                <Link href={`/explainer/${e.author}`}>
+                  <div className="attribution link">
+                    <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
+                    <p className="attributionUsername">{e.author}</p>
+                  </div>
+                </Link>
               }
                <div className="explanationMeat">
                  {parse(e.explanation)}
@@ -108,7 +113,15 @@ class ExplanationsSection extends React.Component {
             font-weight: bold;
             font-size: 24px;
           }
-
+          .link {
+            cursor:pointer;
+          }
+          .link:hover {
+            filter: brightness(115%);
+          }
+          .link:active {
+            filter: brightness(125%);
+          }
         `}</style>
       </div>
     )
