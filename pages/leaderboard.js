@@ -69,8 +69,8 @@ class Leaderboard extends React.Component {
                 <tr>
                   <th>Rank</th>
                   <th>Name</th>
-                  <th>Points</th>
-                  <th>Contributed</th>
+                  <th onClick={this.handleRankByPoints}>Points</th>
+                  <th onClick={this.handleRankByNumExplanations}>Contributed</th>
                 </tr>
                 <tr>
                   <td>1</td>
