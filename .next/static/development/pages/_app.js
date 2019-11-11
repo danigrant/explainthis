@@ -432,30 +432,27 @@ function _getPointsLeaderboard() {
       while (1) {
         switch (_context11.prev = _context11.next) {
           case 0:
-            data = {
-              "leaderboard": []
-            };
+            data = [];
             _context11.next = 3;
-            return usersRef.orderBy('points', 'desc').orderBy('contributedExplanations', 'desc').limit(10).get();
+            return usersRef.orderBy('score', 'desc').orderBy('contributedExplanations', 'desc').limit(10).get();
 
           case 3:
             snapshot = _context11.sent;
             _context11.next = 6;
             return snapshot.forEach(function (doc) {
               var docData = doc.data();
-              data.leaderboard.push({
+              data.push({
                 "username": docData.username,
-                "points": docData.points,
+                "points": docData.score,
                 "numContributedExplanations": docData.contributedExplanations,
                 "id": doc.id
               });
             });
 
           case 6:
-            console.log(data);
             return _context11.abrupt("return", data);
 
-          case 8:
+          case 7:
           case "end":
             return _context11.stop();
         }
@@ -478,30 +475,27 @@ function _getNumExplanationsLeaderboard() {
       while (1) {
         switch (_context12.prev = _context12.next) {
           case 0:
-            data = {
-              "leaderboard": []
-            };
+            data = [];
             _context12.next = 3;
-            return usersRef.orderBy('contributedExplanations', 'desc').orderBy('points', 'desc').limit(10).get();
+            return usersRef.orderBy('contributedExplanations', 'desc').orderBy('score', 'desc').limit(10).get();
 
           case 3:
             snapshot = _context12.sent;
             _context12.next = 6;
             return snapshot.forEach(function (doc) {
               var docData = doc.data();
-              data.leaderboard.push({
+              data.push({
                 "username": docData.username,
-                "points": docData.points,
+                "points": docData.score,
                 "numContributedExplanations": docData.contributedExplanations,
                 "id": doc.id
               });
             });
 
           case 6:
-            console.log(data);
             return _context12.abrupt("return", data);
 
-          case 8:
+          case 7:
           case "end":
             return _context12.stop();
         }
@@ -521,14 +515,6 @@ void function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return getPointsLeaderboard();
-
-          case 2:
-            _context.next = 4;
-            return getNumExplanationsLeaderboard();
-
-          case 4:
           case "end":
             return _context.stop();
         }
@@ -548,7 +534,9 @@ module.exports = {
   addVote: addVote,
   getAllConcepts: getAllConcepts,
   getUsersExplanations: getUsersExplanations,
-  getUserPoints: getUserPoints
+  getUserPoints: getUserPoints,
+  getPointsLeaderboard: getPointsLeaderboard,
+  getNumExplanationsLeaderboard: getNumExplanationsLeaderboard
 };
 
 /***/ }),

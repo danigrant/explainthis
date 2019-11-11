@@ -270,55 +270,48 @@ async function getUserPoints(username) {
 
 
 async function getPointsLeaderboard() {
-  let data = {
-    "leaderboard": []
-  };
-  let snapshot = await usersRef.orderBy('points', 'desc').orderBy('contributedExplanations', 'desc').limit(10).get();
+  let data = [];
+  let snapshot = await usersRef.orderBy('score', 'desc').orderBy('contributedExplanations', 'desc').limit(10).get();
   await snapshot.forEach(doc => {
     let docData = doc.data();
-    data.leaderboard.push({
+    data.push({
       "username": docData.username,
-      "points": docData.points,
+      "points": docData.score,
       "numContributedExplanations": docData.contributedExplanations,
       "id": doc.id
     });
   });
-  console.log(data);
   return data;
 } // get top 10 users by contributed explanations
 
 
 async function getNumExplanationsLeaderboard() {
-  let data = {
-    "leaderboard": []
-  };
-  let snapshot = await usersRef.orderBy('contributedExplanations', 'desc').orderBy('points', 'desc').limit(10).get();
+  let data = [];
+  let snapshot = await usersRef.orderBy('contributedExplanations', 'desc').orderBy('score', 'desc').limit(10).get();
   await snapshot.forEach(doc => {
     let docData = doc.data();
-    data.leaderboard.push({
+    data.push({
       "username": docData.username,
-      "points": docData.points,
+      "points": docData.score,
       "numContributedExplanations": docData.contributedExplanations,
       "id": doc.id
     });
   });
-  console.log(data);
   return data;
 }
 
 const provider = new firebase.auth.TwitterAuthProvider(); // todo sign in with twitter
 
-void async function main() {
-  await getPointsLeaderboard();
-  await getNumExplanationsLeaderboard();
-}();
+void async function main() {}();
 module.exports = {
   getConceptExplanations,
   saveExplanationToDB,
   addVote,
   getAllConcepts,
   getUsersExplanations,
-  getUserPoints
+  getUserPoints,
+  getPointsLeaderboard,
+  getNumExplanationsLeaderboard
 };
 
 /***/ }),
