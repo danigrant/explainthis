@@ -24,7 +24,7 @@ class ExplanationsSection extends React.Component {
              <div className="explanation" id={`explanation-${e.id}`}>
               {
                 this.props.profilepage &&
-                <div className="conceptName">{e.concept}</div>
+                <div className="conceptName">{`${e.author} explains ${e.concept}`}</div>
               }
               {
                 !this.props.profilepage &&

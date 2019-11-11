@@ -110,6 +110,7 @@ async function getUsersExplanations(username) {
       "datetime": docData.datetime,
       "explanation": docData.explanation,
       "score": docData.score,
+      "author": username,
       "id": doc.id
     })
   })

@@ -243,6 +243,7 @@ function _getUsersExplanations() {
                 "datetime": docData.datetime,
                 "explanation": docData.explanation,
                 "score": docData.score,
+                "author": username,
                 "id": doc.id
               });
             });
