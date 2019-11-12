@@ -1066,7 +1066,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       pageProps
     } = this.props;
     return __jsx("div", {
-      className: "jsx-1635431161" + " " + "wrapper",
+      className: "jsx-3495308825" + " " + "wrapper",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 25
@@ -1079,9 +1079,9 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       },
       __self: this
     }, __jsx("link", {
-      href: "https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap",
+      href: "https://fonts.googleapis.com/css?family=Nunito:700,800,900&display=swap",
       rel: "stylesheet",
-      className: "jsx-1635431161",
+      className: "jsx-3495308825",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 27
@@ -1090,7 +1090,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
     }), __jsx("link", {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/icon?family=Material+Icons",
-      className: "jsx-1635431161",
+      className: "jsx-3495308825",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 28
@@ -1099,7 +1099,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
     }), __jsx("link", {
       rel: "stylesheet",
       href: "//cdn.quilljs.com/1.2.6/quill.snow.css",
-      className: "jsx-1635431161",
+      className: "jsx-3495308825",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 29
@@ -1109,16 +1109,16 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       updateAuth: this.updateAuth,
       authenticated: this.state.authenticated
     }, pageProps, {
-      className: "jsx-1635431161" + " " + (pageProps && pageProps.className != null && pageProps.className || ""),
+      className: "jsx-3495308825" + " " + (pageProps && pageProps.className != null && pageProps.className || ""),
       __source: {
         fileName: _jsxFileName,
         lineNumber: 31
       },
       __self: this
     })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      id: "1635431161",
+      id: "3495308825",
       __self: this
-    }, ".wrapper.jsx-1635431161{font-family:-apple-system,'IBM Plex Sans',sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvcGFnZXMvX2FwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUErQmtCLEFBR29FLHFEQUN6RCIsImZpbGUiOiIvVXNlcnMvZGFuaWdyYW50L1Byb2plY3RzL2V4cGxhaW50aGlzL3BhZ2VzL19hcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXG5pbXBvcnQgQXBwIGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcbmltcG9ydCAnLi4vY29tcG9uZW50cy9GaXJlYmFzZSdcbmltcG9ydCB7IGxvZ2luV2l0aFR3aXR0ZXIgfSBmcm9tICcuLi9jb21wb25lbnRzL0ZpcmViYXNlJ1xuaW1wb3J0ICcuLi9jb21wb25lbnRzL1R3aXR0ZXInXG5cbmNsYXNzIE15QXBwIGV4dGVuZHMgQXBwIHtcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcylcbiAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgYXV0aGVudGljYXRlZDogZmFsc2VcbiAgICB9XG4gICAgdGhpcy51cGRhdGVBdXRoID0gdGhpcy51cGRhdGVBdXRoLmJpbmQodGhpcylcbiAgfVxuICBhc3luYyB1cGRhdGVBdXRoKCkge1xuICAgIGF3YWl0IGxvZ2luV2l0aFR3aXR0ZXIoKVxuICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICBhdXRoZW50aWNhdGVkOiAhdGhpcy5zdGF0ZS5hdXRoZW50aWNhdGVkXG4gICAgfVxuICB9XG4gIHJlbmRlcigpIHtcbiAgICBjb25zdCB7IENvbXBvbmVudCwgcGFnZVByb3BzIH0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwid3JhcHBlclwiPlxuICAgICAgPEhlYWQ+XG4gICAgICAgIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9SUJNK1BsZXgrU2Fuczo0MDAsNjAwLDcwMCZkaXNwbGF5PXN3YXBcIiByZWw9XCJzdHlsZXNoZWV0XCIgLz5cbiAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2ljb24/ZmFtaWx5PU1hdGVyaWFsK0ljb25zXCIgLz5cbiAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCIvL2Nkbi5xdWlsbGpzLmNvbS8xLjIuNi9xdWlsbC5zbm93LmNzc1wiIC8+XG4gICAgICA8L0hlYWQ+XG4gICAgICA8Q29tcG9uZW50ICB1cGRhdGVBdXRoPXt0aGlzLnVwZGF0ZUF1dGh9IGF1dGhlbnRpY2F0ZWQ9e3RoaXMuc3RhdGUuYXV0aGVudGljYXRlZH0gey4uLnBhZ2VQcm9wc30gLz5cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgICAud3JhcHBlciB7XG4gICAgICAgICAgICBmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgJ0lCTSBQbGV4IFNhbnMnLCBzYW5zLXNlcmlmO1xuICAgICAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICAgIDwvZGl2PlxuICAgIClcbiAgfVxufVxuXG5NeUFwcC5nZXRJbml0aWFsUHJvcHMgPSBhc3luYyAoYXBwQ29udGV4dCkgPT4ge1xuICAvLyBjYWxscyBwYWdlJ3MgYGdldEluaXRpYWxQcm9wc2AgYW5kIGZpbGxzIGBhcHBQcm9wcy5wYWdlUHJvcHNgXG4gIGNvbnN0IGFwcFByb3BzID0gYXdhaXQgQXBwLmdldEluaXRpYWxQcm9wcyhhcHBDb250ZXh0KTtcblxuICByZXR1cm4geyAuLi5hcHBQcm9wcyB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IE15QXBwXG4iXX0= */\n/*@ sourceURL=/Users/danigrant/Projects/explainthis/pages/_app.js */"));
+    }, ".wrapper.jsx-3495308825{margin:0;font-family:'Nunito',sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvcGFnZXMvX2FwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUErQmtCLEFBR29CLFNBQ3dCLGdDQUNuQyIsImZpbGUiOiIvVXNlcnMvZGFuaWdyYW50L1Byb2plY3RzL2V4cGxhaW50aGlzL3BhZ2VzL19hcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXG5pbXBvcnQgQXBwIGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcbmltcG9ydCAnLi4vY29tcG9uZW50cy9GaXJlYmFzZSdcbmltcG9ydCB7IGxvZ2luV2l0aFR3aXR0ZXIgfSBmcm9tICcuLi9jb21wb25lbnRzL0ZpcmViYXNlJ1xuaW1wb3J0ICcuLi9jb21wb25lbnRzL1R3aXR0ZXInXG5cbmNsYXNzIE15QXBwIGV4dGVuZHMgQXBwIHtcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcylcbiAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgYXV0aGVudGljYXRlZDogZmFsc2VcbiAgICB9XG4gICAgdGhpcy51cGRhdGVBdXRoID0gdGhpcy51cGRhdGVBdXRoLmJpbmQodGhpcylcbiAgfVxuICBhc3luYyB1cGRhdGVBdXRoKCkge1xuICAgIGF3YWl0IGxvZ2luV2l0aFR3aXR0ZXIoKVxuICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICBhdXRoZW50aWNhdGVkOiAhdGhpcy5zdGF0ZS5hdXRoZW50aWNhdGVkXG4gICAgfVxuICB9XG4gIHJlbmRlcigpIHtcbiAgICBjb25zdCB7IENvbXBvbmVudCwgcGFnZVByb3BzIH0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwid3JhcHBlclwiPlxuICAgICAgPEhlYWQ+XG4gICAgICAgIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9TnVuaXRvOjcwMCw4MDAsOTAwJmRpc3BsYXk9c3dhcFwiIHJlbD1cInN0eWxlc2hlZXRcIiAvPlxuICAgICAgICA8bGluayByZWw9XCJzdHlsZXNoZWV0XCIgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vaWNvbj9mYW1pbHk9TWF0ZXJpYWwrSWNvbnNcIiAvPlxuICAgICAgICA8bGluayByZWw9XCJzdHlsZXNoZWV0XCIgaHJlZj1cIi8vY2RuLnF1aWxsanMuY29tLzEuMi42L3F1aWxsLnNub3cuY3NzXCIgLz5cbiAgICAgIDwvSGVhZD5cbiAgICAgIDxDb21wb25lbnQgIHVwZGF0ZUF1dGg9e3RoaXMudXBkYXRlQXV0aH0gYXV0aGVudGljYXRlZD17dGhpcy5zdGF0ZS5hdXRoZW50aWNhdGVkfSB7Li4ucGFnZVByb3BzfSAvPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAud3JhcHBlciB7XG4gICAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICAgIGZvbnQtZmFtaWx5OiAnTnVuaXRvJywgc2Fucy1zZXJpZjtcbiAgICAgICAgfVxuICAgICAgYH08L3N0eWxlPlxuICAgICAgPC9kaXY+XG4gICAgKVxuICB9XG59XG5cbk15QXBwLmdldEluaXRpYWxQcm9wcyA9IGFzeW5jIChhcHBDb250ZXh0KSA9PiB7XG4gIC8vIGNhbGxzIHBhZ2UncyBgZ2V0SW5pdGlhbFByb3BzYCBhbmQgZmlsbHMgYGFwcFByb3BzLnBhZ2VQcm9wc2BcbiAgY29uc3QgYXBwUHJvcHMgPSBhd2FpdCBBcHAuZ2V0SW5pdGlhbFByb3BzKGFwcENvbnRleHQpO1xuXG4gIHJldHVybiB7IC4uLmFwcFByb3BzIH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgTXlBcHBcbiJdfQ== */\n/*@ sourceURL=/Users/danigrant/Projects/explainthis/pages/_app.js */"));
   }
 
 }

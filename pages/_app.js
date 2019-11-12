@@ -24,15 +24,16 @@ class MyApp extends App {
     return (
       <div className="wrapper">
       <Head>
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:700,800,900&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css" />
       </Head>
       <Component  updateAuth={this.updateAuth} authenticated={this.state.authenticated} {...pageProps} />
       <style jsx>{`
-          .wrapper {
-            font-family: -apple-system, 'IBM Plex Sans', sans-serif;
-          }
+        .wrapper {
+          margin: 0;
+          font-family: 'Nunito', sans-serif;
+        }
       `}</style>
       </div>
     )

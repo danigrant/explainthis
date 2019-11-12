@@ -19,45 +19,50 @@ class ExplanationsSection extends React.Component {
   render() {
     return (
       <div className="explanationsSection">
-       {
-         this.props.explanations.map((e) => {
-           return (
-             <div className="explanation" key={`explanation-${e.id}`}>
-              {
-                this.props.profilepage &&
-                <Link href={`/explainthis/${e.concept}`}>
-                  <div className="link conceptName">{`${e.author} explains ${e.concept}`}</div>
-                </Link>
-              }
-              {
-                !this.props.profilepage &&
-                <Link href={`/explainer/${e.author}`}>
-                  <div className="attribution link">
-                    <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
-                    <p className="attributionUsername">{e.author}</p>
-                  </div>
-                </Link>
-              }
-               <div className="explanationMeat">
-                 {parse(e.explanation)}
-               </div>
-               <div className="explanationActionBar">
-                 <div className="explanationAction" onClick={() => this.handleVote(1, e.id)}>
-                   <img src="/images/get-it-face.png" />
-                   {e.score > 0 && <p className="score">+ {e.score}</p>}
-                 </div>
-                 <div className="explanationAction" onClick={() => this.handleVote(-1, e.id)} >
-                   <img src="/images/dont-get-it-face.png"/>
-                 </div>
-               </div>
+         <div className="explanation" key={`explanation-${this.props.explanations[0].id}`}>
+          {
+            this.props.profilepage &&
+            <Link href={`/explainthis/${this.props.explanations[0].concept}`}>
+              <div className="link conceptName">{`${this.props.explanations[0].author} explains ${this.props.explanations[0].concept}`}</div>
+            </Link>
+          }
+          {
+            !this.props.profilepage &&
+            <Link href={`/explainer/${this.props.explanations[0].author}`}>
+              <div className="attribution link">
+                <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
+                <p className="attributionUsername">{this.props.explanations[0].author}</p>
+              </div>
+            </Link>
+          }
+           <div className="explanationMeat">
+             {parse(this.props.explanations[0].explanation)}
+           </div>
+           <div className="explanationActionBar">
+             <div className="get-it-button explanationActionButton" onClick={() => this.handleVote(1, this.props.explanation[0].id)}>
+               <img src="/images/get-it-cat.png" />
+               <p>AHA! WOW! YIPPEE! I get it now.</p>
              </div>
-           )
-         })
-       }
+             <div className="dont-get-it-button explanationActionButton" onClick={() => this.handleVote(-1, this.props.explanation[0].id)} >
+               <p>Nah, explain it to me a different way.</p>
+               <img src="/images/dont-get-it-cat.png" />
+             </div>
+           </div>
+         </div>
         <style jsx>{`
+          .explanationsSection {
+            position: relative;
+            height: 560px;
+          }
           .explanation {
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
+            position: relative;
+            bottom: 20px;
+            height: 100%;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
           }
           .explanation:last-child {
             border: none;
@@ -75,34 +80,56 @@ class ExplanationsSection extends React.Component {
           }
           .explanationMeat {
             padding-bottom: 5px;
+            font-size: 30px;
+            flex-grow: 1;
           }
           .explanationActionBar {
-            padding-bottom: 20px;
+            align-self: center;
+            font-size: 20px;
+            text-align: center;
+            color: white;
           }
-          .explanationAction {
+          .explanationActionButton {
             display: inline-block;
             transition:0.3s;
           }
-          .explanationAction:nth-of-type(2) {
+          .explanationActionButton:nth-of-type(2) {
             margin-left: 35px;
           }
-          .explanationAction img {
+          .explanationActionButton img {
             display: inline-block;
-            width: 24px;
+            width: 45px;
             position: relative;
-            top: 5px;
-            margin-right: 5px;
+            top: 15px;
+            z-index: 1;
           }
-          .explanationAction p {
+          .explanationActionButton p {
             display: inline-block;
+            padding: 10px 30px 10px 30px;
+            border-radius: 20px;
+            margin: 0;
           }
-          explanationAction:hover {
+          .get-it-button p {
+            background-color: #A3D066;
+          }
+          .get-it-button img {
+            position: relative;
+            left: 26px;
+          }
+          .dont-get-it-button p {
+            background-color: #6EC3E9;
+          }
+          .dont-get-it-button img {
+            position: relative;
+            right: 26px;
+          }
+          .explanationActionButton:hover {
             transform: scale(1.1);
             transform-origin: center;
             filter: brightness(115%);
             cursor: pointer;
           }
-          .explanationAction:active:first-child {
+          .explanationActionButton:active:first-child {
             transform: rotate(180deg)
           }
           .score {

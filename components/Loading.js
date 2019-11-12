@@ -1,10 +1,10 @@
-import Header from '../components/Header'
+import MenuContainer from '../components/MenuContainer'
 import AppContainer from '../components/AppContainer';
 
 function Loading() {
   return (
     <div>
-      <Header />
+      <MenuContainer />
       <AppContainer>
         <p>loading...</p>
       </AppContainer>

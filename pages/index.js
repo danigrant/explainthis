@@ -1,20 +1,25 @@
 import { getAllConcepts } from '../components/Firebase'
 import Link from 'next/link'
 import AppContainer from '../components/AppContainer'
+import MenuContainer from '../components/MenuContainer'
+import TopWrapper from '../components/TopWrapper'
 
 const Index = props => (
-  <AppContainer>
-    <h1>A list of all the concepts</h1>
-    <ul>
-      {props.concepts.map(concept => (
-        <li key={concept.id}>
-          <Link href="/explainthis/[id]" as={`/explainthis/${concept.concept}`}>
-            <a>{concept.concept}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </AppContainer>
+  <TopWrapper>
+    <MenuContainer />
+    <AppContainer>
+      <h1>A list of all the concepts</h1>
+      <ul>
+        {props.concepts.map(concept => (
+          <li key={concept.id}>
+            <Link href="/explainthis/[id]" as={`/explainthis/${concept.concept}`}>
+              <a>{concept.concept}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </AppContainer>
+  </TopWrapper>
 );
 
 Index.getInitialProps = async function() {

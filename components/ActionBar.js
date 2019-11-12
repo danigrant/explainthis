@@ -7,16 +7,18 @@ function ActionBar(props) {
         <i className="material-icons">edit_rounded</i>
         <a title="Home">Add Your Own</a>
       </div>
-      <div className="actionBarItem">
-        <i className="material-icons">emoji_people_rounded</i>
-        <Link href="/">
-          <a title="Home">Phone A Friend</a>
-        </Link>
-      </div>
       <style jsx>{`
         .actionBarItem {
           display: inline-block;
-          color: #5a5a5a;
+          color: white;
+          background-color: #A3D066;
+          border-radius: 20px;
+          padding: 5px;
+          padding-right: 15px;
+          padding-left: 15px;
+          position: relative;
+          top: 25px;
+          left: 210px;
         }
         .actionBarItem:nth-of-type(2) {
           margin-left: 35px;
@@ -30,6 +32,8 @@ function ActionBar(props) {
           text-decoration: none;
           color: inherit;
           margin-left: 5px;
+          position: relative;
+          bottom: 2px;
         }
       `}</style>
     </div>

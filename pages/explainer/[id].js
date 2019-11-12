@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../../components/Header'
+import MenuContainer from '../../components/MenuContainer'
 import AppContainer from '../../components/AppContainer';
 import ExplanationsSection from '../../components/ExplanationsSection'
 import { getUsersExplanations, getUserPoints } from '../../components/Firebase'
@@ -38,7 +38,7 @@ class Explainer extends React.Component {
       } else {
         return (
           <div>
-            <Header />
+            <MenuContainer />
             <AppContainer>
               <div className="header">
                 <div className="column">

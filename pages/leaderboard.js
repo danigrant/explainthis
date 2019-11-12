@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/Header'
+import MenuContainer from '../components/MenuContainer'
 import AppContainer from '../components/AppContainer';
 import { getPointsLeaderboard, getNumExplanationsLeaderboard } from '../components/Firebase'
 import Loading from '../components/Loading'
@@ -39,7 +39,7 @@ class Leaderboard extends React.Component {
       } else {
         return (
           <div>
-            <Header />
+            <MenuContainer />
             <AppContainer>
               <div className="title">
                 Leaderboard

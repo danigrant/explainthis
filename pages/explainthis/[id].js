@@ -1,5 +1,6 @@
 import React from 'react'
-import Header from '../../components/Header'
+import TopWrapper from '../../components/TopWrapper'
+import MenuContainer from '../../components/MenuContainer'
 import AppContainer from '../../components/AppContainer';
 import ActionBar from '../../components/ActionBar'
 import ExplanationsSection from '../../components/ExplanationsSection'
@@ -53,21 +54,34 @@ class ExplainThis extends React.Component {
         else {
           return (
             <div>
-              <Header />
-              <AppContainer>
-                <div className="explanationHeader">
-                  <h1>What are all the different ways to explain {this.state.data.concept}?</h1>
-                  <ActionBar handleAnswerClick={this.handleAnswerClick} />
-                  { this.state.showEditor &&
-                    <Editor handleSubmitAnswer={this.handleSubmitAnswer}/>
-                  }
-                  <p>{this.state.data.explanations.length} Explanations</p>
-                </div>
-                <ExplanationsSection handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} explanations={this.state.data.explanations} />
-              </AppContainer>
+            <TopWrapper>
+              <MenuContainer />
+                <AppContainer>
+                  <div className="explanationHeader">
+                    <h1>The short, sweet and wonderfully wacky ways to explain <span className="concept-name">{this.state.data.concept}</span></h1>
+                    <p>{this.state.data.explanations.length} Explanations • Keep clicking through until you find one that, well, clicks.</p>
+                    <ActionBar handleAnswerClick={this.handleAnswerClick} />
+                    { this.state.showEditor &&
+                      <Editor handleSubmitAnswer={this.handleSubmitAnswer}/>
+                    }
+                  </div>
+                  <ExplanationsSection handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} explanations={this.state.data.explanations} />
+                </AppContainer>
+              </TopWrapper>
               <style jsx>{`
-                .explanationHeader {
-                  border-bottom: 1px solid #ddd;
+                .explanationHeader h1 {
+                  margin-bottom: 0;
+                }
+                .explanationHeader p {
+                  margin-top: 10px;
+                  margin-bottom: 5px;
+                  color: #a9a9a9;
+                }
+                .concept-name {
+                  color: #6462EF;
+                }
+                ActionBar {
+                  margin-bottom: 10px;
                 }
              `}</style>
             </div>
