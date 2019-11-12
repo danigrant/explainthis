@@ -39,7 +39,7 @@ class Leaderboard extends React.Component {
         return <Loading />
       } else {
         return (
-          <div>
+          <div className="wrapper">
             <TopWrapper>
             <MenuContainer />
               <AppContainer>
@@ -117,6 +117,9 @@ class Leaderboard extends React.Component {
               </AppContainer>
             </TopWrapper>
             <style jsx>{`
+              .wrapper {
+                width: 100%;
+              }
               .title {
                 text-align: center;
                 padding: 10px;
