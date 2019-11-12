@@ -3,6 +3,7 @@ import parse from 'html-react-parser';
 import { addVote } from './Firebase'
 import Link from 'next/link'
 import Loading from '../components/Loading'
+import AddExplanation from '../components/AddExplanation'
 
 class ExplanationsSection extends React.Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class ExplanationsSection extends React.Component {
             <style jsx>{`
               .explanationsSection {
                 position: relative;
-                height: 560px;
+                height: 100%;
               }
               .explanation {
                 border-bottom: 1px solid #ddd;

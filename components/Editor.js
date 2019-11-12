@@ -31,7 +31,6 @@ class Editor extends React.Component {
     this.setState({
       text: ''
     })
-    this.props.handleSubmitAnswer()
   }
 
   async imageHandler(image) {
@@ -50,21 +49,28 @@ class Editor extends React.Component {
 
   render() {
     return (
+      <div>
       <div className="wrapper">
         <div className="header">
           <div className="attribution">
             <img className="attributionAvatar" src="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX.jpg" />
             <p className="attributionUsername">@barackobama</p>
           </div>
-          <div className="submit-button" onClick={this.handleSave}>submit!</div>
         </div>
-        <ReactQuill ref={(el) => this.quillRef = el} className="editor" modules={{ toolbar: ['link', 'image', 'video'] }} value={this.state.text} onChange={this.handleChange} />
+        <ReactQuill ref={(el) => this.quillRef = el} className="editor" modules={{ toolbar: ['link', 'image', 'video'] }} placeholder={this.props.placeholder} value={this.state.text} onChange={this.handleChange} />
+        </div>
+        <div className="buttonBar">
+          <div onClick={this.handleSave} className="submit-button button">Submit</div>
+          <div onClick={this.handleSave} className="submit-and-tweet-button button">This is my best work. Submit and tweet.</div>
+        </div>
         <style jsx>{`
           .wrapper {
             border: 1px solid #ddd;
             border-radius: 5px;
-            width: 550px;
-            margin-top: 10px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 30px;
+            margin-bottom: 30px;
           }
           .header {
             background: #fafafa;
@@ -94,26 +100,28 @@ class Editor extends React.Component {
             padding: 5px 20px 5px 20px;
             border-radius: 0 0 5px 5px;
           }
-          .submit-button {
-            display:inline-block;
-            padding:0.7em 1.4em;
-            margin:0 0.3em 0.3em 0;
-            border-radius:0.15em;
-            box-sizing: border-box;
-            text-decoration:none;
-            font-family:'Roboto',sans-serif;
-            text-transform:uppercase;
-            font-weight:400;
-            color:#FFFFFF;
-            background-color:#3369ff;
-            box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
-            text-align:center;
-            position:relative;
-            float: right;
-            top: 15px;
+          .button {
+            display: inline-block;
+            padding: 10px 30px 10px 30px;
+            border-radius: 20px;
+            margin: 0;
+            color: white;
           }
-          .submit-button:active {
-            filter: brightness(90%);
+          .submit-button {
+            background: #A3D066;
+            margin-right: 25px;
+          }
+          .submit-and-tweet-button {
+            background: #6EC3E9;
+          }
+          .button:hover {
+            transform: scale(1.1);
+            transform-origin: center;
+            filter: brightness(115%);
+            cursor: pointer;
+          }
+          .button:active {
+            filter: brightness(120%);
           }
         `}</style>
         <style jsx global>{`
@@ -122,6 +130,9 @@ class Editor extends React.Component {
           }
           .ql-toolbar.ql-snow {
             border-bottom: 1px solid #ddd;
+          }
+          .ql-editor {
+            font-family: Nunito;
           }
         `}</style>
       </div>

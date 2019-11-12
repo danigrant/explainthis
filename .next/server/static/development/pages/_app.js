@@ -1066,7 +1066,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       pageProps
     } = this.props;
     return __jsx("div", {
-      className: "jsx-3495308825" + " " + "wrapper",
+      className: "jsx-2102477472" + " " + "wrapper",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 25
@@ -1081,7 +1081,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
     }, __jsx("link", {
       href: "https://fonts.googleapis.com/css?family=Nunito:700,800,900&display=swap",
       rel: "stylesheet",
-      className: "jsx-3495308825",
+      className: "jsx-2102477472",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 27
@@ -1090,7 +1090,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
     }), __jsx("link", {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/icon?family=Material+Icons",
-      className: "jsx-3495308825",
+      className: "jsx-2102477472",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 28
@@ -1099,7 +1099,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
     }), __jsx("link", {
       rel: "stylesheet",
       href: "//cdn.quilljs.com/1.2.6/quill.snow.css",
-      className: "jsx-3495308825",
+      className: "jsx-2102477472",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 29
@@ -1109,16 +1109,16 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
       updateAuth: this.updateAuth,
       authenticated: this.state.authenticated
     }, pageProps, {
-      className: "jsx-3495308825" + " " + (pageProps && pageProps.className != null && pageProps.className || ""),
+      className: "jsx-2102477472" + " " + (pageProps && pageProps.className != null && pageProps.className || "wrapper"),
       __source: {
         fileName: _jsxFileName,
         lineNumber: 31
       },
       __self: this
     })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_8___default.a, {
-      id: "3495308825",
+      id: "2102477472",
       __self: this
-    }, ".wrapper.jsx-3495308825{margin:0;font-family:'Nunito',sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvcGFnZXMvX2FwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUErQmtCLEFBR29CLFNBQ3dCLGdDQUNuQyIsImZpbGUiOiIvVXNlcnMvZGFuaWdyYW50L1Byb2plY3RzL2V4cGxhaW50aGlzL3BhZ2VzL19hcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXG5pbXBvcnQgQXBwIGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcbmltcG9ydCAnLi4vY29tcG9uZW50cy9GaXJlYmFzZSdcbmltcG9ydCB7IGxvZ2luV2l0aFR3aXR0ZXIgfSBmcm9tICcuLi9jb21wb25lbnRzL0ZpcmViYXNlJ1xuaW1wb3J0ICcuLi9jb21wb25lbnRzL1R3aXR0ZXInXG5cbmNsYXNzIE15QXBwIGV4dGVuZHMgQXBwIHtcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcylcbiAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgYXV0aGVudGljYXRlZDogZmFsc2VcbiAgICB9XG4gICAgdGhpcy51cGRhdGVBdXRoID0gdGhpcy51cGRhdGVBdXRoLmJpbmQodGhpcylcbiAgfVxuICBhc3luYyB1cGRhdGVBdXRoKCkge1xuICAgIGF3YWl0IGxvZ2luV2l0aFR3aXR0ZXIoKVxuICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICBhdXRoZW50aWNhdGVkOiAhdGhpcy5zdGF0ZS5hdXRoZW50aWNhdGVkXG4gICAgfVxuICB9XG4gIHJlbmRlcigpIHtcbiAgICBjb25zdCB7IENvbXBvbmVudCwgcGFnZVByb3BzIH0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwid3JhcHBlclwiPlxuICAgICAgPEhlYWQ+XG4gICAgICAgIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9TnVuaXRvOjcwMCw4MDAsOTAwJmRpc3BsYXk9c3dhcFwiIHJlbD1cInN0eWxlc2hlZXRcIiAvPlxuICAgICAgICA8bGluayByZWw9XCJzdHlsZXNoZWV0XCIgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vaWNvbj9mYW1pbHk9TWF0ZXJpYWwrSWNvbnNcIiAvPlxuICAgICAgICA8bGluayByZWw9XCJzdHlsZXNoZWV0XCIgaHJlZj1cIi8vY2RuLnF1aWxsanMuY29tLzEuMi42L3F1aWxsLnNub3cuY3NzXCIgLz5cbiAgICAgIDwvSGVhZD5cbiAgICAgIDxDb21wb25lbnQgIHVwZGF0ZUF1dGg9e3RoaXMudXBkYXRlQXV0aH0gYXV0aGVudGljYXRlZD17dGhpcy5zdGF0ZS5hdXRoZW50aWNhdGVkfSB7Li4ucGFnZVByb3BzfSAvPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAud3JhcHBlciB7XG4gICAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICAgIGZvbnQtZmFtaWx5OiAnTnVuaXRvJywgc2Fucy1zZXJpZjtcbiAgICAgICAgfVxuICAgICAgYH08L3N0eWxlPlxuICAgICAgPC9kaXY+XG4gICAgKVxuICB9XG59XG5cbk15QXBwLmdldEluaXRpYWxQcm9wcyA9IGFzeW5jIChhcHBDb250ZXh0KSA9PiB7XG4gIC8vIGNhbGxzIHBhZ2UncyBgZ2V0SW5pdGlhbFByb3BzYCBhbmQgZmlsbHMgYGFwcFByb3BzLnBhZ2VQcm9wc2BcbiAgY29uc3QgYXBwUHJvcHMgPSBhd2FpdCBBcHAuZ2V0SW5pdGlhbFByb3BzKGFwcENvbnRleHQpO1xuXG4gIHJldHVybiB7IC4uLmFwcFByb3BzIH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgTXlBcHBcbiJdfQ== */\n/*@ sourceURL=/Users/danigrant/Projects/explainthis/pages/_app.js */"));
+    }, ".wrapper.jsx-2102477472{width:100%;margin:0;font-family:'Nunito',sans-serif;min-height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvcGFnZXMvX2FwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUErQmtCLEFBR3NCLFdBQ0YsU0FDd0IsZ0NBQ2pCLGdCQUNKLDBFQUNkIiwiZmlsZSI6Ii9Vc2Vycy9kYW5pZ3JhbnQvUHJvamVjdHMvZXhwbGFpbnRoaXMvcGFnZXMvX2FwcC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCBBcHAgZnJvbSAnbmV4dC9hcHAnXG5pbXBvcnQgSGVhZCBmcm9tICduZXh0L2hlYWQnO1xuaW1wb3J0ICcuLi9jb21wb25lbnRzL0ZpcmViYXNlJ1xuaW1wb3J0IHsgbG9naW5XaXRoVHdpdHRlciB9IGZyb20gJy4uL2NvbXBvbmVudHMvRmlyZWJhc2UnXG5pbXBvcnQgJy4uL2NvbXBvbmVudHMvVHdpdHRlcidcblxuY2xhc3MgTXlBcHAgZXh0ZW5kcyBBcHAge1xuICBjb25zdHJ1Y3Rvcihwcm9wcykge1xuICAgIHN1cGVyKHByb3BzKVxuICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICBhdXRoZW50aWNhdGVkOiBmYWxzZVxuICAgIH1cbiAgICB0aGlzLnVwZGF0ZUF1dGggPSB0aGlzLnVwZGF0ZUF1dGguYmluZCh0aGlzKVxuICB9XG4gIGFzeW5jIHVwZGF0ZUF1dGgoKSB7XG4gICAgYXdhaXQgbG9naW5XaXRoVHdpdHRlcigpXG4gICAgdGhpcy5zdGF0ZSA9IHtcbiAgICAgIGF1dGhlbnRpY2F0ZWQ6ICF0aGlzLnN0YXRlLmF1dGhlbnRpY2F0ZWRcbiAgICB9XG4gIH1cbiAgcmVuZGVyKCkge1xuICAgIGNvbnN0IHsgQ29tcG9uZW50LCBwYWdlUHJvcHMgfSA9IHRoaXMucHJvcHNcbiAgICByZXR1cm4gKFxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3cmFwcGVyXCI+XG4gICAgICA8SGVhZD5cbiAgICAgICAgPGxpbmsgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1OdW5pdG86NzAwLDgwMCw5MDAmZGlzcGxheT1zd2FwXCIgcmVsPVwic3R5bGVzaGVldFwiIC8+XG4gICAgICAgIDxsaW5rIHJlbD1cInN0eWxlc2hlZXRcIiBocmVmPVwiaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9pY29uP2ZhbWlseT1NYXRlcmlhbCtJY29uc1wiIC8+XG4gICAgICAgIDxsaW5rIHJlbD1cInN0eWxlc2hlZXRcIiBocmVmPVwiLy9jZG4ucXVpbGxqcy5jb20vMS4yLjYvcXVpbGwuc25vdy5jc3NcIiAvPlxuICAgICAgPC9IZWFkPlxuICAgICAgPENvbXBvbmVudCBjbGFzc05hbWU9XCJ3cmFwcGVyXCIgdXBkYXRlQXV0aD17dGhpcy51cGRhdGVBdXRofSBhdXRoZW50aWNhdGVkPXt0aGlzLnN0YXRlLmF1dGhlbnRpY2F0ZWR9IHsuLi5wYWdlUHJvcHN9IC8+XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAgIC53cmFwcGVyIHtcbiAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgZm9udC1mYW1pbHk6ICdOdW5pdG8nLCBzYW5zLXNlcmlmO1xuICAgICAgICAgIG1pbi1oZWlnaHQ6IDEwMCU7XG4gICAgICAgIFx0ZGlzcGxheTogZmxleDtcbiAgICAgICAgfVxuICAgICAgYH08L3N0eWxlPlxuICAgICAgPC9kaXY+XG4gICAgKVxuICB9XG59XG5cbk15QXBwLmdldEluaXRpYWxQcm9wcyA9IGFzeW5jIChhcHBDb250ZXh0KSA9PiB7XG4gIC8vIGNhbGxzIHBhZ2UncyBgZ2V0SW5pdGlhbFByb3BzYCBhbmQgZmlsbHMgYGFwcFByb3BzLnBhZ2VQcm9wc2BcbiAgY29uc3QgYXBwUHJvcHMgPSBhd2FpdCBBcHAuZ2V0SW5pdGlhbFByb3BzKGFwcENvbnRleHQpO1xuXG4gIHJldHVybiB7IC4uLmFwcFByb3BzIH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgTXlBcHBcbiJdfQ== */\n/*@ sourceURL=/Users/danigrant/Projects/explainthis/pages/_app.js */"));
   }
 
 }

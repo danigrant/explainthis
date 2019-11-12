@@ -119,14 +119,14 @@ class Leaderboard extends React.Component {
             <style jsx>{`
               .title {
                 text-align: center;
-                background-color: #302DC5;
                 padding: 10px;
-                color: white;
-                font-weight: bold;
+                font-weight: 900;
                 width: 750px;
                 font-size: 28px;
                 border-radius: 4px 4px 0 0;
                 margin: 0 auto;
+                margin-top: 20px;
+                margin-bottom: 20px;
               }
               table {
                 background-color: white;

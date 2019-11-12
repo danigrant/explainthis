@@ -28,11 +28,14 @@ class MyApp extends App {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css" />
       </Head>
-      <Component  updateAuth={this.updateAuth} authenticated={this.state.authenticated} {...pageProps} />
+      <Component className="wrapper" updateAuth={this.updateAuth} authenticated={this.state.authenticated} {...pageProps} />
       <style jsx>{`
         .wrapper {
+          width: 100%;
           margin: 0;
           font-family: 'Nunito', sans-serif;
+          min-height: 100%;
+        	display: flex;
         }
       `}</style>
       </div>

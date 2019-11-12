@@ -38,7 +38,7 @@ class Explainer extends React.Component {
         return <Loading />
       } else {
         return (
-          <div>
+          <div className="wrapper">
             <TopWrapper>
             <MenuContainer />
             <AppContainer>
@@ -71,6 +71,18 @@ class Explainer extends React.Component {
             </AppContainer>
             </TopWrapper>
             <style jsx>{`
+              .explanationsSection {
+                height: 100%;
+              }
+              ProfileExplanationsSection {
+                height: 100%;
+              }
+              .wrapper {
+                width: 100%;
+              }
+              .username {
+                font-weight: 900;
+              }
               .avatar {
                 border-radius: 100px;
                 width: 100px;

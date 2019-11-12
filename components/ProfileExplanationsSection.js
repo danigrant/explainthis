@@ -37,7 +37,7 @@ class ProfileExplanationsSection extends React.Component {
             <style jsx>{`
               .explanationsSection {
                 position: relative;
-                height: 560px;
+                height: 100%;
               }
               .explanation {
                 border-bottom: 1px solid #ddd;
@@ -64,10 +64,12 @@ class ProfileExplanationsSection extends React.Component {
               .explanationMeat {
                 padding-bottom: 5px;
                 font-size: 30px;
+                height: 100%;
                 flex-grow: 1;
               }
               .explanationActionBar {
-                align-self: center;
+                position: relative;
+                bottom: 75px;
                 font-size: 20px;
                 text-align: center;
                 color: white;
@@ -76,7 +78,6 @@ class ProfileExplanationsSection extends React.Component {
                 display: inline-block;
                 transition:0.3s;
                 position: relative;
-                bottom: 50px;
               }
               .explanationActionButton:nth-of-type(2) {
                 margin-left: 35px;
@@ -122,7 +123,7 @@ class ProfileExplanationsSection extends React.Component {
                 color: #bbb;
               }
               .concept-name {
-                font-weight: bold;
+                font-weight: 900;
                 color: #6462EF;
               }
               .link {
@@ -135,7 +136,8 @@ class ProfileExplanationsSection extends React.Component {
                 filter: brightness(125%);
               }
               .title {
-                font-size: 24px;
+                font-size: 22px;
+                font-weight: 900;
               }
             `}</style>
           </div>

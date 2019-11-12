@@ -8,6 +8,7 @@ import Editor from '../../components/Editor'
 import { getConceptExplanations } from '../../components/Firebase'
 import Loading from '../../components/Loading'
 import { withRouter } from 'next/router'
+import AddExplanation from '../../components/AddExplanation'
 
 class ExplainThis extends React.Component {
   constructor(props) {
@@ -65,10 +66,19 @@ class ExplainThis extends React.Component {
         const { router } = this.props
         if (!this.state.data.concept) {
           return <Loading />
+        } else if (this.state.showEditor) {
+          return (
+            <TopWrapper>
+              <MenuContainer />
+                <AppContainer>
+                  <AddExplanation handleAnswerClick={this.handleAnswerClick} />
+                </AppContainer>
+                </TopWrapper>
+          )
         }
         else {
           return (
-            <div>
+            <div className="wrapper">
             <TopWrapper>
               <MenuContainer />
                 <AppContainer>
@@ -84,8 +94,12 @@ class ExplainThis extends React.Component {
                 </AppContainer>
               </TopWrapper>
               <style jsx>{`
+                .wrapper {
+                  width: 100%;
+                }
                 .explanationHeader h1 {
                   margin-bottom: 0;
+                  font-weight: 900;
                 }
                 .explanationHeader p {
                   margin-top: 10px;
