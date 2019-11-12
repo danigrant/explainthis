@@ -16,7 +16,8 @@ class ExplainThis extends React.Component {
     this.state = {
       showEditor: false,
       data: {},
-      explanationIndex: 0
+      explanationIndex: 0,
+      celebration: false
     }
     const { router } = this.props
     this.handleSubmitAnswer = this.handleSubmitAnswer.bind(this)
@@ -31,7 +32,8 @@ class ExplainThis extends React.Component {
   }
   handleAnswerClick = () => {
     this.setState({
-      showEditor: !this.state.showEditor
+      showEditor: !this.state.showEditor,
+      celebration: false
     })
   }
   async parentHandleVote() {
@@ -47,11 +49,17 @@ class ExplainThis extends React.Component {
     })
     console.log('in incrementExplanation, new index is', this.state.explanationIndex, 'out of', this.state.data.explanations.length);
   }
-  async handleSubmitAnswer() {
+  noMoreCelebration = () => {
+    this.setState({
+      celebration: false
+    })
+  }
+  async handleSubmitAnswer(celebrationBoolean) {
     const { router } = this.props
     this.setState({
       showEditor: !this.state.showEditor,
-      data: await getConceptExplanations(router.query.id)
+      data: await getConceptExplanations(router.query.id),
+      celebration: celebrationBoolean
     })
   }
   async handleUdatingDisplayedScores() {
@@ -71,7 +79,7 @@ class ExplainThis extends React.Component {
             <TopWrapper>
               <MenuContainer />
                 <AppContainer>
-                  <AddExplanation handleAnswerClick={this.handleAnswerClick} />
+                  <AddExplanation celebration={this.state.celebration} handleAnswerClick={this.handleAnswerClick} />
                 </AppContainer>
                 </TopWrapper>
           )
@@ -90,7 +98,7 @@ class ExplainThis extends React.Component {
                       <Editor handleSubmitAnswer={this.handleSubmitAnswer}/>
                     }
                   </div>
-                  <ExplanationsSection parentHandleVote={this.parentHandleVote} handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} incrementExplanation={this.incrementExplanation} currentExplanation={this.state.data.explanations[this.state.explanationIndex]} />
+                  <ExplanationsSection handleSubmitAnswer={this.handleSubmitAnswer} parentHandleVote={this.parentHandleVote} handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} incrementExplanation={this.incrementExplanation} currentExplanation={this.state.data.explanations[this.state.explanationIndex]} />
                 </AppContainer>
               </TopWrapper>
               <style jsx>{`

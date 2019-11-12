@@ -31,6 +31,7 @@ class Editor extends React.Component {
     this.setState({
       text: ''
     })
+    this.props.handleAnswerClick()
   }
 
   async imageHandler(image) {

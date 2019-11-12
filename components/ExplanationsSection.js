@@ -18,6 +18,8 @@ class ExplanationsSection extends React.Component {
     await this.props.parentHandleVote()
     if (vote == -1) {
       this.props.incrementExplanation()
+    } else if (vote == 1) {
+      this.props.handleSubmitAnswer(true)
     }
     await this.props.handleUdatingDisplayedScores()
   }
