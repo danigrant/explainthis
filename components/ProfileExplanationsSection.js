@@ -83,9 +83,9 @@ class ProfileExplanationsSection extends React.Component {
               }
               .explanationActionButton img {
                 display: inline-block;
-                width: 45px;
+                width: 75px;
                 position: relative;
-                top: 15px;
+                top: 25px;
                 position: relative;
                 right: 26px;
                 z-index: 1;

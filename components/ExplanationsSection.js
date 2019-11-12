@@ -106,9 +106,9 @@ class ExplanationsSection extends React.Component {
               }
               .explanationActionButton img {
                 display: inline-block;
-                width: 45px;
+                width: 75px;
                 position: relative;
-                top: 15px;
+                top: 25px;
                 z-index: 1;
               }
               .explanationActionButton p {
@@ -136,9 +136,6 @@ class ExplanationsSection extends React.Component {
                 transform-origin: center;
                 filter: brightness(115%);
                 cursor: pointer;
-              }
-              .explanationActionButton:active:first-child {
-                transform: rotate(180deg)
               }
               .score {
                 margin-right: 10px;
