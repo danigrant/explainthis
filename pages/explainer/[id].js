@@ -1,7 +1,8 @@
 import React from 'react'
+import TopWrapper from '../../components/TopWrapper'
 import MenuContainer from '../../components/MenuContainer'
 import AppContainer from '../../components/AppContainer';
-import ExplanationsSection from '../../components/ExplanationsSection'
+import ProfileExplanationsSection from '../../components/ProfileExplanationsSection'
 import { getUsersExplanations, getUserPoints } from '../../components/Firebase'
 import Loading from '../../components/Loading'
 import { withRouter } from 'next/router'
@@ -11,10 +12,10 @@ class Explainer extends React.Component {
     super(props)
     this.state = {
       data: [],
-      userPoints: {}
+      userPoints: {},
+      explanationIndex: 0
     }
     const { router } = this.props
-    this.handleVote = this.handleVote.bind(this)
   }
   async componentDidMount() {
     const { router } = this.props
@@ -23,12 +24,12 @@ class Explainer extends React.Component {
       userPoints: await getUserPoints(router.query.id)
     })
   }
-  async parentHandleVote() {
-    const { router } = this.props
+  incrementExplanation = () => {
+    let newIndex = this.state.explanationIndex == this.state.data.explanations.length - 1 ? 0 : this.state.explanationIndex + 1
     this.setState({
-      data: await getUsersExplanations(router.query.id),
-      userPoints: await getUserPoints(router.query.id)
+      explanationIndex: newIndex
     })
+    console.log('in incrementExplanation, new index is', this.state.explanationIndex, 'out of', this.state.data.explanations.length);
   }
   render() {
     {
@@ -38,6 +39,7 @@ class Explainer extends React.Component {
       } else {
         return (
           <div>
+            <TopWrapper>
             <MenuContainer />
             <AppContainer>
               <div className="header">
@@ -64,10 +66,10 @@ class Explainer extends React.Component {
               </div>
               <div className="explanationsSection">
                 <p>{`All of ${router.query.id}'s explanations:`}</p>
-                <ExplanationsSection handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} incrementExplanation={this.incrementExplanation} currentExplanation={this.state.data.explanations[this.state.explanationIndex]} />
-                <ExplanationsSection parentHandleVote={this.parentHandleVote} profilepage={true} explanations={this.state.data.explanations} />
+                <ProfileExplanationsSection incrementExplanation={this.incrementExplanation} currentExplanation={this.state.data.explanations[this.state.explanationIndex]} />
               </div>
             </AppContainer>
+            </TopWrapper>
             <style jsx>{`
               .avatar {
                 border-radius: 100px;
