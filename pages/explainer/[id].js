@@ -64,6 +64,7 @@ class Explainer extends React.Component {
               </div>
               <div className="explanationsSection">
                 <p>{`All of ${router.query.id}'s explanations:`}</p>
+                <ExplanationsSection handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} incrementExplanation={this.incrementExplanation} currentExplanation={this.state.data.explanations[this.state.explanationIndex]} />
                 <ExplanationsSection parentHandleVote={this.parentHandleVote} profilepage={true} explanations={this.state.data.explanations} />
               </div>
             </AppContainer>

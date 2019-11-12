@@ -16,9 +16,7 @@ function ActionBar(props) {
           padding: 5px;
           padding-right: 15px;
           padding-left: 15px;
-          position: relative;
-          top: 25px;
-          left: 210px;
+          margin-top: 10px;
         }
         .actionBarItem:nth-of-type(2) {
           margin-left: 35px;

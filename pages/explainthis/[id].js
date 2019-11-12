@@ -14,11 +14,13 @@ class ExplainThis extends React.Component {
     super(props) // first thing you always do, calls the master react constructor
     this.state = {
       showEditor: false,
-      data: {}
+      data: {},
+      explanationIndex: 0
     }
     const { router } = this.props
     this.handleSubmitAnswer = this.handleSubmitAnswer.bind(this)
     this.handleUdatingDisplayedScores = this.handleUdatingDisplayedScores.bind(this)
+    this.parentHandleVote = this.parentHandleVote.bind(this)
   }
   async componentWillMount() {
     const { router } = this.props
@@ -30,6 +32,19 @@ class ExplainThis extends React.Component {
     this.setState({
       showEditor: !this.state.showEditor
     })
+  }
+  async parentHandleVote() {
+    const { router } = this.props
+    // this.setState({
+    //   data: await getConceptExplanations(router.query.id)
+    // })
+  }
+  incrementExplanation = () => {
+    let newIndex = this.state.explanationIndex == this.state.data.explanations.length - 1 ? 0 : this.state.explanationIndex + 1
+    this.setState({
+      explanationIndex: newIndex
+    })
+    console.log('in incrementExplanation, new index is', this.state.explanationIndex, 'out of', this.state.data.explanations.length);
   }
   async handleSubmitAnswer() {
     const { router } = this.props
@@ -65,7 +80,7 @@ class ExplainThis extends React.Component {
                       <Editor handleSubmitAnswer={this.handleSubmitAnswer}/>
                     }
                   </div>
-                  <ExplanationsSection handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} explanations={this.state.data.explanations} />
+                  <ExplanationsSection parentHandleVote={this.parentHandleVote} handleUdatingDisplayedScores={this.handleUdatingDisplayedScores} incrementExplanation={this.incrementExplanation} currentExplanation={this.state.data.explanations[this.state.explanationIndex]} />
                 </AppContainer>
               </TopWrapper>
               <style jsx>{`
