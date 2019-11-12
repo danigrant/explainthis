@@ -51,6 +51,9 @@ class AddExplanation extends React.Component {
           float: right;
           width: 30px;
         }
+        .concept-name {
+          color: #6462EF;
+        }
         h1 {
           margin-bottom: 0;
           font-weight: 900;
